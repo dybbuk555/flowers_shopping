@@ -1,0 +1,5 @@
+type Sample @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  First: String
+  Second: String
+}
