@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm install -g @aws-amplify/cli amplifyPush --simple next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
