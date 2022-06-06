@@ -28,6 +28,6 @@ export type CollectionsType = Array<{
   href: string;
 }>;
 
-export type Slug = {
-  slug: string;
+export type Infos = {
+  infos: Array<{id: string; title: string; content: string; page:string}>;
 };

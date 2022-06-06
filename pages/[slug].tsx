@@ -1,26 +1,15 @@
-import { useInfoData } from "../lib/hooks";
-import { Slug } from "../lib/types";
+import { infoData } from "../lib/hooks";
+import { Infos } from "../lib/types";
 import { InfoPages } from "../src/models";
 import MetaComponent from "../components/Meta";
-import { BRAND_DESCRIPTION, BRAND_TAGLINE } from "../lib";
 
-const Info = (slug: Slug) => {
-  const meta = {
-    title: BRAND_TAGLINE,
-    description: BRAND_DESCRIPTION,
-  };
-
-  const details: InfoPages[] = useInfoData(InfoPages, slug.slug);
-
+const Info = (info: Infos) => {
   return (
     <>
-      {details.map((detail, i) => (
-        <MetaComponent
-          title={detail.title}
-          description={meta.description}
-          key={i}
-        />
-      ))}
+    <MetaComponent />
+      {/* {info.infos.map((detail, i) => (
+        <MetaComponent title={detail.title} key={i} />
+      ))} */}
 
       <div className="relative py-16 bg-white overflow-hidden">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
@@ -127,7 +116,7 @@ const Info = (slug: Slug) => {
           </div>
         </div>
         <div className="relative px-4 sm:px-6 lg:px-8">
-          {details.map((detail, i) => (
+          {info.infos.map((detail, i) => (
             <div key={i} className="text-lg max-w-prose mx-auto">
               <h1>
                 <span className="block text-base text-center text-green-600 font-semibold tracking-wide uppercase">
@@ -151,7 +140,9 @@ const Info = (slug: Slug) => {
 export default Info;
 
 export async function getServerSideProps({ params }: any) {
+  const data = await infoData(InfoPages, params.slug);
+
   return {
-    props: { slug: params.slug },
+    props: { infos: JSON.parse(JSON.stringify(data)) },
   };
 }

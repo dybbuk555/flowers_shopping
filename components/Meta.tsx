@@ -10,6 +10,8 @@ import {
 import { Meta } from "../lib/types";
 
 const MetaComponent = ({ title, description, image, url }: Meta) => {
+
+  console.log(title)
   return (
     <>
       <Head>
