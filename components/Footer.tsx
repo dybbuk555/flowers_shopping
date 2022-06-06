@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { FlagImageComponent, LogoComponent } from "./Images";
 import { footerNavigation } from "../lib";
+import Link from "next/link";
 
 const FooterComponent: NextPage = () => {
   return (
@@ -25,12 +26,12 @@ const FooterComponent: NextPage = () => {
                       <ul role="list" className="mt-6 space-y-6">
                         {footerNavigation.products.map((item) => (
                           <li key={item.name} className="text-sm">
-                            <a
+                            <Link
                               href={item.href}
                               className="text-gray-500 hover:text-gray-600"
                             >
                               {item.name}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>

@@ -45,7 +45,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: "More", href: "#" },
+    { name: "Reviews", href: "#" },
     { name: "Our Story", href: "#" },
   ],
 };

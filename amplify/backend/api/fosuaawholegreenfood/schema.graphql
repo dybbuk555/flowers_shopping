@@ -1,5 +1,24 @@
+type InfoPages @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  content: String
+  page: String
+}
+
+type Products @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  price: String
+  image: String
+  tags: String
+  availability: String
+  category: String
+  description: String
+}
+
 type Sample @model @auth(rules: [{allow: public}]) {
   id: ID!
   First: String
   Second: String
 }
+ 

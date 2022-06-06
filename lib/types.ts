@@ -27,3 +27,7 @@ export type CollectionsType = Array<{
   imageAlt: string;
   href: string;
 }>;
+
+export type Slug = {
+  slug: string;
+};

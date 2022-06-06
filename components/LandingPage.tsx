@@ -3,70 +3,17 @@ import { BRAND_BUTTON_TEXT, BRAND_DESCRIPTION, BRAND_TAGLINE } from "../lib";
 import {
   HeroImageComponent,
   CollectionsImageComponent,
-  FeaturedImageComponent,
   DecorativeImageComponent,
 } from "./Images";
-import HeaderComponent from "./Header";
 import ActionComponent from "./Action";
 import TestimonialsComponent from "./Testimonials";
-import FooterComponent from "./Footer";
 import { collections } from "../lib";
-
-
-const trendingProducts = [
-    {
-      id: 1,
-      name: "Product",
-  
-      price: "$35",
-      href: "#",
-      imageSrc:
-        "https://images.unsplash.com/photo-1534121222821-9e2e2936f059?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1774&q=80",
-      imageAlt:
-        "Black machined steel pen with hexagonal grip and small white logo at top.",
-    },
-    {
-      id: 1,
-      name: "Product",
-  
-      price: "$35",
-      href: "#",
-      imageSrc:
-        "https://images.unsplash.com/photo-1534121222821-9e2e2936f059?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1774&q=80",
-      imageAlt:
-        "Black machined steel pen with hexagonal grip and small white logo at top.",
-    },
-    {
-      id: 1,
-      name: "Product",
-  
-      price: "$35",
-      href: "#",
-      imageSrc:
-        "https://images.unsplash.com/photo-1534121222821-9e2e2936f059?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1774&q=80",
-      imageAlt:
-        "Black machined steel pen with hexagonal grip and small white logo at top.",
-    },
-    {
-      id: 1,
-      name: "Product",
-  
-      price: "$35",
-      href: "#",
-      imageSrc:
-        "https://images.unsplash.com/photo-1534121222821-9e2e2936f059?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1774&q=80",
-      imageAlt:
-        "Black machined steel pen with hexagonal grip and small white logo at top.",
-    },
-  ];
-
+import TrendingProducts from "./Trending";
 
 const LandingPageComponent: NextPage = () => {
-
-    return(<>
-     <div className="bg-white">
-        <HeaderComponent />
-
+  return (
+    <>
+      <div className="bg-white">
         <main>
           {/* Hero */}
           <div className="flex flex-col border-b border-gray-200 lg:border-0">
@@ -123,41 +70,7 @@ const LandingPageComponent: NextPage = () => {
                 </a>
               </div>
 
-              <div className="mt-8 relative">
-                <div className="relative w-full overflow-x-auto">
-                  <ul
-                    role="list"
-                    className="mx-4 inline-flex space-x-8 sm:mx-6 lg:mx-0 lg:space-x-0 lg:grid lg:grid-cols-4 lg:gap-x-8"
-                  >
-                    {trendingProducts.map((product) => (
-                      <li
-                        key={product.id}
-                        className="w-64 inline-flex flex-col text-center lg:w-auto"
-                      >
-                        <div className="group relative">
-                          <div className="w-full bg-gray-200 rounded-md overflow-hidden aspect-w-1 aspect-h-1">
-                            <FeaturedImageComponent
-                              src={product.imageSrc}
-                              alt={product.imageAlt}
-                            />
-                          </div>
-                          <div className="mt-6">
-                            <h3 className="mt-1 font-semibold text-gray-900">
-                              <a href={product.href}>
-                                <span className="absolute inset-0" />
-                                {product.name}
-                              </a>
-                            </h3>
-                            <p className="mt-1 text-gray-900">
-                              {product.price}
-                            </p>
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              <TrendingProducts />
 
               <div className="mt-12 px-4 sm:hidden">
                 <a
@@ -248,10 +161,9 @@ const LandingPageComponent: NextPage = () => {
             <TestimonialsComponent />
           </div>
         </main>
-
-        <FooterComponent />
       </div>
-    </>)
-}
+    </>
+  );
+};
 
 export default LandingPageComponent;
