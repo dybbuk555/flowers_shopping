@@ -2,14 +2,14 @@ import { infoData } from "../lib/hooks";
 import { Infos } from "../lib/types";
 import { InfoPages } from "../src/models";
 import MetaComponent from "../components/Meta";
+import { BRAND_NAME } from "../lib";
 
 const Info = (info: Infos) => {
   return (
     <>
-    <MetaComponent />
-      {/* {info.infos.map((detail, i) => (
-        <MetaComponent title={detail.title} key={i} />
-      ))} */}
+      {info.infos.map((detail, i) => (
+        <MetaComponent title={`${detail.title} | ${BRAND_NAME}`} key={i} />
+      ))}
 
       <div className="relative py-16 bg-white overflow-hidden">
         <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">

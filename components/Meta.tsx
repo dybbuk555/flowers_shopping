@@ -11,11 +11,10 @@ import { Meta } from "../lib/types";
 
 const MetaComponent = ({ title, description, image, url }: Meta) => {
 
-  console.log(title)
   return (
     <>
       <Head>
-        <title>{`${title} | ${BRAND_NAME}` || BRAND_NAME}</title>
+        <title>{title || BRAND_NAME}</title>
 
         <meta name="title" content={BRAND_TAGLINE} />
         <meta name="description" content={description || BRAND_DESCRIPTION} />
