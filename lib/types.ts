@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export type Meta = {
   title?: string | null;
   description?: string | null;
@@ -10,6 +8,8 @@ export type Meta = {
 export type ImageType = {
   src: string;
   alt: string;
+  height?: number;
+  width?: number;
 };
 
 export type FooterType = {
@@ -28,6 +28,31 @@ export type CollectionsType = Array<{
   href: string;
 }>;
 
-export type Infos = {
-  infos: Array<{id: string; title: string; content: string; page:string}>;
+export type InfosType = {
+  infos: Array<{
+    id: string;
+    title: string;
+    content: string;
+    page: string;
+    header: string;
+  }>;
+};
+
+export type ProductsType = {
+  products: Array<{
+    title: string;
+    price: string;
+    image: string;
+    tags: string;
+    availability: string;
+    category: string;
+    slug: string;
+    description: string;
+  }>;
+  slug?: string;
+};
+
+export type Context = {
+  req?: any;
+  modules?: any[];
 };

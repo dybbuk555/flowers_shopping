@@ -23,7 +23,7 @@ const TrendingProducts: NextPage = () => {
                   <div className="w-full bg-gray-200 rounded-md overflow-hidden aspect-w-1 aspect-h-1">
                     <FeaturedImageComponent
                       src={product.image as unknown as string}
-                      alt={`${product.image} image`}
+                      alt={`${product.title} image`}
                     />
                   </div>
                   <div className="mt-6">

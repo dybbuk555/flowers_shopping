@@ -10,45 +10,8 @@ import {
 } from "@heroicons/react/outline";
 
 import { Fragment, useState } from "react";
-import { BRAND_NAME, classNames } from "../lib";
-
-const currencies = [
-  // "CAD",
-  "USD",
-  // "AUD",
-  // "EUR",
-  // "GBP"
-];
-const navigation = {
-  categories: [
-    {
-      name: "Fish",
-      featured: [
-        { name: "Mud Fish", href: "#" },
-        { name: "Koobi", href: "#" },
-        { name: "Emai", href: "#" },
-      ],
-      collection: [
-        { name: "All", href: "#" },
-        { name: "Fresh", href: "#" },
-        { name: "Smoked", href: "#" },
-      ],
-    },
-    {
-      name: "Spices",
-      featured: [{ name: "Powdered Pepper", href: "#" }],
-      collection: [
-        { name: "All", href: "#" },
-        { name: "New", href: "#" },
-        { name: "On Sale", href: "#" },
-      ],
-    },
-  ],
-  pages: [
-    { name: "Reviews", href: "#" },
-    { name: "Our Story", href: "#" },
-  ],
-};
+import { BRAND_NAME, classNames, currencies, navigation } from "../lib";
+import Link from "next/link";
 
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -328,10 +291,12 @@ const HeaderComponent: NextPage = () => {
                 <div className="h-16 flex items-center justify-between">
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
-                    <a href="#">
-                      <span className="sr-only">{BRAND_NAME}</span>
-                      <LogoComponent />
-                    </a>
+                    <Link href="/">
+                      <div>
+                        <span className="sr-only">{BRAND_NAME}</span>
+                        <LogoComponent height={50} width={50} />
+                      </div>
+                    </Link>
                   </div>
 
                   <div className="hidden h-full lg:flex">
@@ -481,10 +446,12 @@ const HeaderComponent: NextPage = () => {
                   </div>
 
                   {/* Logo (lg-) */}
-                  <a href="#" className="lg:hidden">
-                    <span className="sr-only">Workflow</span>
-                    <LogoComponent />
-                  </a>
+                  <Link href="/">
+                    <div className="lg:hidden">
+                      <span className="sr-only">{BRAND_NAME}</span>
+                      <LogoComponent height={50} width={50} />
+                    </div>
+                  </Link>
 
                   <div className="flex-1 flex items-center justify-end">
                     <div className="flex items-center lg:ml-8">

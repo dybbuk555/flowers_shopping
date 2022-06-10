@@ -1,9 +1,3 @@
-import {
-  ShieldCheckIcon,
-  CursorClickIcon,
-  SupportIcon,
-  ScaleIcon,
-} from "@heroicons/react/outline";
 import { CollectionsType, FooterType } from "./types";
 
 export const BRAND_NAME: string = "Fosuaa Whole Green Foods";
@@ -18,10 +12,7 @@ export const BRAND_URL: string = "https://www.fosuaawholegreenfoods.com";
 export const BRAND_BUTTON_TEXT: string = "Shop Now";
 
 export const BRAND_IMAGE: string =
-  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_32/v1653917523/fosuaa/fosuaa_logo.webp";
-
-export const BRAND_ICON: string =
-  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_32/v1653917514/fosuaa/fosuaa_icon.webp";
+  "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/v1653917523/fosuaa/fosuaa_logo.webp";
 
 export const BRAND_FAVICON: string =
   "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_16/v1653917523/fosuaa/fosuaa_logo.webp";
@@ -29,6 +20,38 @@ export const BRAND_FAVICON: string =
 export const classNames = (...classes: any) => {
   return classes.filter(Boolean).join(" ");
 };
+
+export const navigation = {
+  categories: [
+    {
+      name: "Fish",
+      featured: [
+        { name: "Mud Fish", href: "#" },
+        { name: "Koobi", href: "#" },
+        { name: "Emai", href: "#" },
+      ],
+      collection: [
+        { name: "All", href: "/collections/fish" },
+        { name: "Fresh", href: "/collections/fresh" },
+        { name: "Smoked", href: "/collections/smoked" },
+      ],
+    },
+    {
+      name: "Spices",
+      featured: [{ name: "Powdered Pepper", href: "#" }],
+      collection: [
+        { name: "All", href: "/collections/spices" },
+        { name: "New", href: "/collections/new" },
+        { name: "On Sale", href: "/collections/sale" },
+      ],
+    },
+  ],
+  pages: [
+    { name: "Reviews", href: "/reviews" },
+    { name: "Our Story", href: "/about-us" },
+  ],
+};
+
 
 export const footerNavigation: FooterType = {
   products: [
@@ -76,7 +99,7 @@ export const collections: CollectionsType = [
     imageSrc:
       "https://images.unsplash.com/photo-1577193459085-2da60ca7fd77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     imageAlt: "all collection of whole foods",
-    href: "#",
+    href: "/collections/all",
   },
   {
     name: "New Arrivals",
@@ -84,7 +107,7 @@ export const collections: CollectionsType = [
     imageSrc:
       "https://images.unsplash.com/photo-1577193459085-2da60ca7fd77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     imageAlt: "fresh and restocked collection of whole foods",
-    href: "#",
+    href: "/collections/new",
   },
   {
     name: "On Sale",
@@ -92,6 +115,6 @@ export const collections: CollectionsType = [
     imageSrc:
       "https://images.unsplash.com/photo-1577193459085-2da60ca7fd77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     imageAlt: "collections on sale",
-    href: "#",
+    href: "collections/sale",
   },
 ];

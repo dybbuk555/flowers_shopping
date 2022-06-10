@@ -1,9 +1,16 @@
 import Image from "next/image";
-import { BRAND_ICON } from "../lib";
+import { BRAND_IMAGE } from "../lib";
 import { ImageType } from "../lib/types";
 
-export const LogoComponent = () => {
-  return <Image src={BRAND_ICON} alt="logo" height={32} width={32} />;
+export const LogoComponent = ({ height, width }: any) => {
+  return (
+    <Image
+      src={`https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_${width},h_${height}/v1653917514/fosuaa/fosuaa_icon.webp`}
+      alt="logo"
+      height={height}
+      width={height}
+    />
+  );
 };
 
 export const HeroImageComponent = () => {
@@ -17,28 +24,13 @@ export const HeroImageComponent = () => {
   );
 };
 
-export const CollectionsImageComponent = ({src, alt}: ImageType) => {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      height={256}
-      width={389}
-    />
-  );
+export const CollectionsImageComponent = ({ src, alt }: ImageType) => {
+  return <Image src={src} alt={alt} height={256} width={389} />;
 };
 
-export const FeaturedImageComponent = ({src, alt}: ImageType) => {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      height={280}
-      width={280}
-    />
-  );
+export const FeaturedImageComponent = ({ src, alt }: ImageType) => {
+  return <Image src={src} alt={alt} height={280} width={280} />;
 };
-
 
 export const DecorativeImageComponent = () => {
   return (
@@ -60,4 +52,8 @@ export const FlagImageComponent = () => {
       width={20}
     />
   );
+};
+
+export const CategoryImageComponent = ({ src, alt }: ImageType) => {
+  return <Image src={src} alt={alt} height={576} width={384} />;
 };

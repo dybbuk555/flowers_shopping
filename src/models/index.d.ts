@@ -21,6 +21,7 @@ export declare class InfoPages {
   readonly title?: string | null;
   readonly content?: string | null;
   readonly page?: string | null;
+  readonly header?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<InfoPages, InfoPagesMetaData>);
@@ -36,6 +37,7 @@ export declare class Products {
   readonly availability?: string | null;
   readonly category?: string | null;
   readonly description?: string | null;
+  readonly slug?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Products, ProductsMetaData>);

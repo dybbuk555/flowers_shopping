@@ -16,13 +16,3 @@ export const useData = (model: any) => {
 
   return data;
 };
-
-export const infoData = async (model: any, route: any) => {
-  const getData: typeof model[] = await DataStore.query(model, (item: any) =>
-    item.page("eq", route)
-  );
-  // const subscription = DataStore.observe(model).subscribe(() => getData());
-  // return () => subscription.unsubscribe();
-
-  return getData;
-};
