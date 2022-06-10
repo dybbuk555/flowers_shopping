@@ -13,13 +13,16 @@ import { Fragment, useState } from "react";
 import { BRAND_NAME, classNames, currencies, navigation } from "../lib";
 import Link from "next/link";
 import CartComponent from "./Cart";
+import { cartStateStore } from "../lib/store";
 
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const open = cartStateStore((state) => state.open);
+  const setOpen = cartStateStore((state) => state.setOpen);
 
   return (
     <>
-    <CartComponent/>
+      <CartComponent />
       {/* Mobile menu */}
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
         <Dialog
@@ -294,7 +297,7 @@ const HeaderComponent: NextPage = () => {
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
                     <Link href="/">
-                      <div>
+                      <div style={{ cursor: 'pointer' }}>
                         <span className="sr-only">{BRAND_NAME}</span>
                         <LogoComponent height={50} width={50} />
                       </div>
@@ -449,7 +452,7 @@ const HeaderComponent: NextPage = () => {
 
                   {/* Logo (lg-) */}
                   <Link href="/">
-                    <div className="lg:hidden">
+                    <div className="lg:hidden" style={{ cursor: 'pointer' }}>
                       <span className="sr-only">{BRAND_NAME}</span>
                       <LogoComponent height={50} width={50} />
                     </div>
@@ -489,7 +492,8 @@ const HeaderComponent: NextPage = () => {
 
                       <div className="flow-root">
                         <a
-                          href="#"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setOpen(!open)}
                           className="group -m-2 p-2 flex items-center"
                         >
                           <ShoppingCartIcon

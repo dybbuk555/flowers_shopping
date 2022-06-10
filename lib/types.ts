@@ -56,3 +56,8 @@ export type Context = {
   req?: any;
   modules?: any[];
 };
+
+export type CartStateType = {
+  open: boolean;
+  setOpen: (val: boolean) => void;
+};

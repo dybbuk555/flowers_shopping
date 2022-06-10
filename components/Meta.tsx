@@ -9,6 +9,7 @@ import {
 } from "../lib";
 import { Meta } from "../lib/types";
 
+
 const MetaComponent = ({ title, description, image, url }: Meta) => {
 
   return (

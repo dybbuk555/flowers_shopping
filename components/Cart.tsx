@@ -2,6 +2,7 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
+import { cartStateStore } from '../lib/store'
 
 const products = [
   {
@@ -29,7 +30,8 @@ const products = [
 ]
 
 const CartComponent = () => {
-  const [open, setOpen] = useState(false)
+  const open = cartStateStore((state) => state.open)
+  const setOpen = cartStateStore((state)=> state.setOpen)
 
   return (
     <Transition.Root show={open} as={Fragment}>

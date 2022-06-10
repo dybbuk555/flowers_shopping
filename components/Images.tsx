@@ -67,10 +67,6 @@ export const FlagImageComponent = () => {
       alt="decoorative background image"
       height={15}
       width={20}
-      blurDataURL={
-        "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,h_15,w_20/v1654025327/fosuaa/usa_fflag.webp"
-      }
-      placeholder="blur"
     />
   );
 };
