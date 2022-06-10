@@ -4,16 +4,22 @@ import MetaComponent from "../components/Meta";
 import { BRAND_NAME } from "../lib";
 import InfoComponent from "../components/Info";
 import { withSSRContext } from "aws-amplify";
+import PageNotFound from "./404";
 
 const Info = (data: InfosType) => {
-  console.log(data);
   return (
     <>
-      {data.infos.map((detail, i) => (
-        <MetaComponent title={`${detail.title} | ${BRAND_NAME}`} key={i} />
-      ))}
+      {data.infos.length < 1 ? (
+        <PageNotFound />
+      ) : (
+        <>
+          {data.infos.map((detail, i) => (
+            <MetaComponent title={`${detail.title} | ${BRAND_NAME}`} key={i} />
+          ))}
 
-      <InfoComponent {...data} />
+          <InfoComponent {...data} />
+        </>
+      )}
     </>
   );
 };

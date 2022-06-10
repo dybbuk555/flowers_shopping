@@ -28,7 +28,7 @@ const TrendingProducts: NextPage = () => {
                   </div>
                   <div className="mt-6">
                     <h3 className="mt-1 font-semibold text-gray-900">
-                      <a href={`#`}>
+                      <a href={`/product/${product.slug}`}>
                         <span className="absolute inset-0" />
                         {product.title}
                       </a>

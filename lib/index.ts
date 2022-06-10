@@ -26,9 +26,9 @@ export const navigation = {
     {
       name: "Fish",
       featured: [
-        { name: "Mud Fish", href: "#" },
-        { name: "Koobi", href: "#" },
-        { name: "Emai", href: "#" },
+        { name: "Mud Fish", href: "/product/mud-fish" },
+        { name: "Koobi", href: "/product/koobi" },
+        { name: "Emai", href: "/product/emai" },
       ],
       collection: [
         { name: "All", href: "/collections/fish" },
@@ -55,11 +55,11 @@ export const navigation = {
 
 export const footerNavigation: FooterType = {
   products: [
-    { name: "Mud Fish", href: "#" },
-    { name: "Koobi", href: "#" },
-    { name: "Emai", href: "#" },
-    { name: "Red Pepper", href: "#" },
-    { name: "Gari", href: "#" },
+    { name: "Mud Fish", href: "/product/mud-fish" },
+    { name: "Koobi", href: "/product/koobi" },
+    { name: "Emai", href: "/product/emai" },
+    { name: "Red Pepper", href: "/product/red-pepper" },
+    { name: "Gari", href: "/product/gari" },
   ],
   customerService: [
     { name: "Contact", href: "/contact" },

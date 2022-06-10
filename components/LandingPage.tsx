@@ -36,7 +36,7 @@ const LandingPageComponent: NextPage = () => {
                       </p>
                       <div className="mt-6">
                         <a
-                          href="#"
+                          href="/collections/fish"
                           className="inline-block bg-green-600 border border-transparent py-3 px-8 rounded-md font-medium text-white hover:bg-green-700"
                         >
                           {BRAND_BUTTON_TEXT}
@@ -150,7 +150,7 @@ const LandingPageComponent: NextPage = () => {
                   Get your favorite items while theyre in stock.
                 </p>
                 <a
-                  href="#"
+                  href="/collections/sale"
                   className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto"
                 >
                   Get access to our one-time sale
