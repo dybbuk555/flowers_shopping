@@ -9,6 +9,7 @@ import ActionComponent from "./Action";
 import TestimonialsComponent from "./Testimonials";
 import { collections } from "../lib";
 import TrendingProducts from "./Trending";
+import Link from "next/link";
 
 const LandingPageComponent: NextPage = () => {
   return (
@@ -35,12 +36,12 @@ const LandingPageComponent: NextPage = () => {
                         {BRAND_DESCRIPTION}
                       </p>
                       <div className="mt-6">
-                        <a
-                          href="/collections/fish"
-                          className="inline-block bg-green-600 border border-transparent py-3 px-8 rounded-md font-medium text-white hover:bg-green-700"
-                        >
-                          {BRAND_BUTTON_TEXT}
-                        </a>
+                        <Link href="/collections/fish">
+                          <a className="inline-block bg-green-600 border border-transparent py-3 px-8 rounded-md font-medium text-white hover:bg-green-700">
+                            {" "}
+                            {BRAND_BUTTON_TEXT}
+                          </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -62,23 +63,22 @@ const LandingPageComponent: NextPage = () => {
                 >
                   Trending foods
                 </h2>
-                <a
-                  href="#"
-                  className="hidden sm:block text-sm font-semibold text-green-600 hover:text-green-500"
-                >
-                  See everything<span aria-hidden="true"> &rarr;</span>
-                </a>
+                <Link href="#">
+                  <a className="hidden sm:block text-sm font-semibold text-green-600 hover:text-green-500">
+                    See everything<span aria-hidden="true"> &rarr;</span>
+                  </a>
+                </Link>
               </div>
 
               <TrendingProducts />
 
               <div className="mt-12 px-4 sm:hidden">
-                <a
-                  href="#"
-                  className="text-sm font-semibold text-green-600 hover:text-green-500"
-                >
-                  See everything<span aria-hidden="true"> &rarr;</span>
-                </a>
+                <Link href="#">
+                  <a className="text-sm font-semibold text-green-600 hover:text-green-500">
+                    {" "}
+                    See everything<span aria-hidden="true"> &rarr;</span>
+                  </a>
+                </Link>
               </div>
             </div>
           </section>
@@ -107,10 +107,12 @@ const LandingPageComponent: NextPage = () => {
                         />
                       </div>
                       <h3 className="mt-6 text-sm text-gray-500">
-                        <a href={collection.href}>
-                          <span className="absolute inset-0" />
-                          {collection.name}
-                        </a>
+                        <Link href={collection.href}>
+                          <>
+                            <span className="absolute inset-0" />
+                            {collection.name}
+                          </>
+                        </Link>
                       </h3>
                       <p className="text-base font-semibold text-gray-900">
                         {collection.description}
@@ -149,12 +151,11 @@ const LandingPageComponent: NextPage = () => {
                   Most of our products are limited releases that wont come back.
                   Get your favorite items while theyre in stock.
                 </p>
-                <a
-                  href="/collections/sale"
-                  className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto"
-                >
-                  Get access to our one-time sale
-                </a>
+                <Link href="/collections/sale">
+                  <a className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto">
+                    Get access to our one-time sale
+                  </a>
+                </Link>
               </div>
             </section>
 

@@ -9,10 +9,6 @@ export const LogoComponent = ({ height, width }: any) => {
       alt="logo"
       height={height}
       width={height}
-      blurDataURL={
-        "https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_${width},h_${height}/v1653917514/fosuaa/fosuaa_icon.webp"
-      }
-      placeholder="blur"
     />
   );
 };

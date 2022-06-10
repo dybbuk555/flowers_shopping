@@ -2,13 +2,10 @@ import { CheckIcon } from "@heroicons/react/solid";
 import { ShieldCheckIcon } from "@heroicons/react/outline";
 import { ProductImageComponent } from "./Images";
 import { ProductsType } from "../lib/types";
-import PageNotFound from "../pages/404";
-import Example from "../pages/test";
 
 const ProductComponent = (data: ProductsType) => {
   return (
     <>
-    <Example/>
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
           {/* Product details */}

@@ -12,12 +12,14 @@ import {
 import { Fragment, useState } from "react";
 import { BRAND_NAME, classNames, currencies, navigation } from "../lib";
 import Link from "next/link";
+import CartComponent from "./Cart";
 
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
+    <CartComponent/>
       {/* Mobile menu */}
       <Transition.Root show={mobileMenuOpen} as={Fragment}>
         <Dialog

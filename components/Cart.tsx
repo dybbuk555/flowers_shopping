@@ -28,8 +28,8 @@ const products = [
   // More products...
 ]
 
-export default function Example() {
-  const [open, setOpen] = useState(true)
+const CartComponent = () => {
+  const [open, setOpen] = useState(false)
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -155,3 +155,5 @@ export default function Example() {
     </Transition.Root>
   )
 }
+
+export default CartComponent;
