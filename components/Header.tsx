@@ -4,7 +4,6 @@ import { Popover, Transition, Dialog, Tab } from "@headlessui/react";
 import {
   MenuIcon,
   SearchIcon,
-  ShoppingCartIcon,
   UserIcon,
   XIcon,
 } from "@heroicons/react/outline";
@@ -13,12 +12,10 @@ import { Fragment, useState } from "react";
 import { BRAND_NAME, classNames, currencies, navigation } from "../lib";
 import Link from "next/link";
 import CartComponent from "./Cart";
-import { cartStateStore } from "../lib/store";
+import CartIconComponent from "./CartIcon";
 
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const open = cartStateStore((state) => state.open);
-  const setOpen = cartStateStore((state) => state.setOpen);
 
   return (
     <>
@@ -490,24 +487,7 @@ const HeaderComponent: NextPage = () => {
                         aria-hidden="true"
                       />
 
-                      <div className="flow-root">
-                        <a
-                          style={{ cursor: "pointer" }}
-                          onClick={() => setOpen(!open)}
-                          className="group -m-2 p-2 flex items-center"
-                        >
-                          <ShoppingCartIcon
-                            className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                            aria-hidden="true"
-                          />
-                          <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                            0
-                          </span>
-                          <span className="sr-only">
-                            items in cart, view bag
-                          </span>
-                        </a>
-                      </div>
+                     <CartIconComponent/>
                     </div>
                   </div>
                 </div>

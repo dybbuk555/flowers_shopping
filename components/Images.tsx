@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { BRAND_IMAGE } from "../lib";
 import { ImageType } from "../lib/types";
 
 export const LogoComponent = ({ height, width }: any) => {
@@ -15,15 +14,23 @@ export const LogoComponent = ({ height, width }: any) => {
 
 export const HeroImageComponent = () => {
   return (
-    <Image
+    // <Image
+    //   src="https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    //   alt="logo"
+    //   height={838}
+    //   width={720}
+    //   layout='responsive'
+    //   sizes="10vw"
+    //   blurDataURL={
+    //     "https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+    //   }
+    //   placeholder="blur"
+    // />
+    <img
       src="https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-      alt="logo"
-      height={838}
-      width={720}
-      blurDataURL={
-        "https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-      }
-      placeholder="blur"
+      alt=""
+      className="w-full h-full object-center object-cover"
+      loading="lazy"
     />
   );
 };
@@ -92,6 +99,19 @@ export const ProductImageComponent = ({ src, alt }: ImageType) => {
       height={592}
       width={592}
       quality={100}
+      blurDataURL={src}
+      placeholder="blur"
+    />
+  );
+};
+
+export const CartProductImageComponent = ({ src, alt }: ImageType) => {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      height={94}
+      width={94}
       blurDataURL={src}
       placeholder="blur"
     />

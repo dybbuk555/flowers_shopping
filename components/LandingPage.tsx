@@ -18,7 +18,7 @@ const LandingPageComponent: NextPage = () => {
         <main>
           {/* Hero */}
           <div className="flex flex-col border-b border-gray-200 lg:border-0">
-            <ActionComponent />
+            {/* <ActionComponent /> */}
 
             <div className="relative">
               <div
@@ -63,7 +63,7 @@ const LandingPageComponent: NextPage = () => {
                 >
                   Trending foods
                 </h2>
-                <Link href="#">
+                <Link href="/collections/trending">
                   <a className="hidden sm:block text-sm font-semibold text-green-600 hover:text-green-500">
                     See everything<span aria-hidden="true"> &rarr;</span>
                   </a>

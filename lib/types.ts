@@ -52,6 +52,26 @@ export type ProductsType = {
   slug?: string;
 };
 
+export type ProductType = {
+  title: string;
+  price: string;
+  image: string;
+  tags: string;
+  availability: string;
+  category: string;
+  slug: string;
+  description: string;
+};
+
+export type CartContentType = {
+  title: string;
+  price: string;
+  image: string;
+  availability: string;
+  slug: string;
+  quantity: number;
+};
+
 export type Context = {
   req?: any;
   modules?: any[];
