@@ -7,15 +7,17 @@ import {
   UserIcon,
   XIcon,
 } from "@heroicons/react/outline";
-
 import { Fragment, useState } from "react";
 import { BRAND_NAME, classNames, currencies, navigation } from "../lib";
 import Link from "next/link";
 import CartComponent from "./Cart";
 import CartIconComponent from "./CartIcon";
+import { useSession, signIn } from "next-auth/react";
+import Banner from "./Banner";
 
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   return (
     <>
@@ -162,20 +164,43 @@ const HeaderComponent: NextPage = () => {
 
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 p-2 block font-medium text-gray-900"
-                    >
-                      Create an account
-                    </a>
-                  </div>
-                  <div className="flow-root">
-                    <a
-                      href="#"
-                      className="-m-2 p-2 block font-medium text-gray-900"
-                    >
-                      Sign in
-                    </a>
+                    {session && session?.user?.email ? (
+                      <>
+                        <Link href={"/account"}>
+                          <div className="-m-2 p-2 block font-medium text-gray-900 cursor">
+                            Account
+                          </div>
+                        </Link>
+                        <span
+                          className="h-6 w-px bg-gray-600"
+                          aria-hidden="true"
+                        />
+                        <Link href={"/api/auth/signout"}>
+                          <div className="-m-2 p-2 block font-medium text-gray-900 cursor">
+                            Sign out
+                          </div>
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <span
+                          onClick={() => signIn("cognito")}
+                          className="-m-2 p-2 block font-medium text-gray-900 cursor"
+                        >
+                          Create an account
+                        </span>
+                        <span
+                          className="h-6 w-px bg-gray-600"
+                          aria-hidden="true"
+                        />
+                        <span
+                          onClick={() => signIn("cognito")}
+                          className="-m-2 p-2 block font-medium text-gray-900 cursor"
+                        >
+                          Sign in
+                        </span>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -264,24 +289,40 @@ const HeaderComponent: NextPage = () => {
                 </div>
               </form>
 
-              <p className="flex-1 text-center text-sm font-medium text-white lg:flex-none">
-                Get free delivery on orders over $100
-              </p>
+              <Banner />
 
               <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-gray-100"
-                >
-                  Create an account
-                </a>
-                <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
-                <a
-                  href="#"
-                  className="text-sm font-medium text-white hover:text-gray-100"
-                >
-                  Sign in
-                </a>
+                {session && session?.user?.email ? (
+                  <>
+                    <Link href={"/account"}>
+                      <div className="text-sm font-medium text-white hover:text-gray-100 cursor">
+                        Account
+                      </div>
+                    </Link>
+                    <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
+                    <Link href={"/api/auth/signout"}>
+                      <div className="text-sm font-medium text-white hover:text-gray-100 cursor">
+                        Sign out
+                      </div>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <span
+                      onClick={() => signIn("cognito")}
+                      className="text-sm font-medium text-white hover:text-gray-100 cursor"
+                    >
+                      Create an account
+                    </span>
+                    <span className="h-6 w-px bg-gray-600" aria-hidden="true" />
+                    <span
+                      onClick={() => signIn("cognito")}
+                      className="text-sm font-medium text-white hover:text-gray-100 cursor"
+                    >
+                      Sign in
+                    </span>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -294,7 +335,7 @@ const HeaderComponent: NextPage = () => {
                   {/* Logo (lg+) */}
                   <div className="hidden lg:flex lg:items-center">
                     <Link href="/">
-                      <div style={{ cursor: 'pointer' }}>
+                      <div style={{ cursor: "pointer" }}>
                         <span className="sr-only">{BRAND_NAME}</span>
                         <LogoComponent height={50} width={50} />
                       </div>
@@ -449,7 +490,7 @@ const HeaderComponent: NextPage = () => {
 
                   {/* Logo (lg-) */}
                   <Link href="/">
-                    <div className="lg:hidden" style={{ cursor: 'pointer' }}>
+                    <div className="lg:hidden" style={{ cursor: "pointer" }}>
                       <span className="sr-only">{BRAND_NAME}</span>
                       <LogoComponent height={50} width={50} />
                     </div>
@@ -472,13 +513,15 @@ const HeaderComponent: NextPage = () => {
                         </div>
 
                         <div className="flex">
-                          <a
-                            href="#"
-                            className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                          >
-                            <span className="sr-only">Account</span>
-                            <UserIcon className="w-6 h-6" aria-hidden="true" />
-                          </a>
+                          <Link href="/account">
+                            <div className="-m-2 p-2 text-gray-400 hover:text-gray-500 cursor">
+                              <span className="sr-only">Account</span>
+                              <UserIcon
+                                className="w-6 h-6"
+                                aria-hidden="true"
+                              />
+                            </div>
+                          </Link>
                         </div>
                       </div>
 
@@ -487,7 +530,7 @@ const HeaderComponent: NextPage = () => {
                         aria-hidden="true"
                       />
 
-                     <CartIconComponent/>
+                      <CartIconComponent />
                     </div>
                   </div>
                 </div>

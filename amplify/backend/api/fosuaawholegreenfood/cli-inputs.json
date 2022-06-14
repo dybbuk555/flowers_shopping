@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "fosuaawholegreenfood",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-1667a6c6-2d64-457f-a943-f59dbb1e2c4b/amplify/backend/api/fosuaawholegreenfood/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-15280f9c-1089-400b-bd19-66e3fe5f082c/amplify/backend/api/fosuaawholegreenfood/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

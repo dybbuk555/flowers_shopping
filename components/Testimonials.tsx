@@ -1,27 +1,10 @@
 import { NextPage } from "next";
-
-const testimonials = [
-  {
-    id: 1,
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    attribution: "Sarah Peters, New Orleans",
-  },
-  {
-    id: 2,
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    attribution: "Kelly McPherson, Chicago",
-  },
-  {
-    id: 3,
-    quote:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    attribution: "Chris Paul, Phoenix",
-  },
-];
+import { useDataWithLimit } from "../lib/hooks";
+import { Reviews } from "../src/models";
 
 const TestimonialsComponent: NextPage = () => {
+  const testimonials: Reviews[] = useDataWithLimit(Reviews, 3);
+
   return (
     <>
       {/* Testimonials */}
@@ -54,9 +37,9 @@ const TestimonialsComponent: NextPage = () => {
                   />
                 </svg>
                 <div className="mt-8 sm:mt-0 sm:ml-6 lg:mt-10 lg:ml-0">
-                  <p className="text-lg text-gray-600">{testimonial.quote}</p>
+                  <p className="text-lg text-gray-600">{testimonial.review}</p>
                   <cite className="mt-4 block font-semibold not-italic text-gray-900">
-                    {testimonial.attribution}
+                    {testimonial.name}
                   </cite>
                 </div>
               </blockquote>

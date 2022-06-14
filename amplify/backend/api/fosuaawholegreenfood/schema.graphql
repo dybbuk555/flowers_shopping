@@ -1,3 +1,21 @@
+type Banner @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  content: String
+}
+
+type Sale @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  content: String
+  buttonText: String
+}
+
+type Reviews @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  review: String
+}
+
 type InfoPages @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
@@ -16,11 +34,5 @@ type Products @model @auth(rules: [{allow: public}]) {
   category: String
   description: String
   slug: String
-}
-
-type Sample @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  First: String
-  Second: String
 }
  

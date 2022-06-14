@@ -4,6 +4,18 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type BannerMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type SaleMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type ReviewsMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type InfoPagesMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -12,8 +24,34 @@ type ProductsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type SampleMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
+export declare class Banner {
+  readonly id: string;
+  readonly content?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Banner, BannerMetaData>);
+  static copyOf(source: Banner, mutator: (draft: MutableModel<Banner, BannerMetaData>) => MutableModel<Banner, BannerMetaData> | void): Banner;
+}
+
+export declare class Sale {
+  readonly id: string;
+  readonly title?: string | null;
+  readonly content?: string | null;
+  readonly buttonText?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Sale, SaleMetaData>);
+  static copyOf(source: Sale, mutator: (draft: MutableModel<Sale, SaleMetaData>) => MutableModel<Sale, SaleMetaData> | void): Sale;
+}
+
+export declare class Reviews {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly review?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Reviews, ReviewsMetaData>);
+  static copyOf(source: Reviews, mutator: (draft: MutableModel<Reviews, ReviewsMetaData>) => MutableModel<Reviews, ReviewsMetaData> | void): Reviews;
 }
 
 export declare class InfoPages {
@@ -42,14 +80,4 @@ export declare class Products {
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Products, ProductsMetaData>);
   static copyOf(source: Products, mutator: (draft: MutableModel<Products, ProductsMetaData>) => MutableModel<Products, ProductsMetaData> | void): Products;
-}
-
-export declare class Sample {
-  readonly id: string;
-  readonly First?: string | null;
-  readonly Second?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Sample, SampleMetaData>);
-  static copyOf(source: Sample, mutator: (draft: MutableModel<Sample, SampleMetaData>) => MutableModel<Sample, SampleMetaData> | void): Sample;
 }

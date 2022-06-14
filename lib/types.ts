@@ -65,7 +65,7 @@ export type ProductType = {
 
 export type CartContentType = {
   title: string;
-  price: string;
+  price: number;
   image: string;
   availability: string;
   slug: string;
@@ -80,4 +80,9 @@ export type Context = {
 export type CartStateType = {
   open: boolean;
   setOpen: (val: boolean) => void;
+};
+
+export type NotificationsType = {
+  content: string;
+  color: string;
 };

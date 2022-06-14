@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import { FeaturedImageComponent } from "./Images";
 import { Products } from "../src/models";
-import { useData } from "../lib/hooks";
+import { useDataWithLimit } from "../lib/hooks";
 
 const TrendingProducts: NextPage = () => {
-  const products: Products[] = useData(Products);
+  const products: Products[] = useDataWithLimit(Products, 4);
 
   return (
     <>
