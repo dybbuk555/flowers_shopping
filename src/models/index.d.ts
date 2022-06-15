@@ -4,6 +4,10 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type CheckoutMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type BannerMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -22,6 +26,30 @@ type InfoPagesMetaData = {
 
 type ProductsMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class Checkout {
+  readonly id: string;
+  readonly email?: string | null;
+  readonly firstName?: string | null;
+  readonly lastName?: string | null;
+  readonly address?: string | null;
+  readonly apartment?: string | null;
+  readonly city?: string | null;
+  readonly country?: string | null;
+  readonly region?: string | null;
+  readonly zip?: string | null;
+  readonly phone?: string | null;
+  readonly instructions?: string | null;
+  readonly amount?: string | null;
+  readonly status?: string | null;
+  readonly cart?: string | null;
+  readonly tracking?: string | null;
+  readonly trackingID?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Checkout, CheckoutMetaData>);
+  static copyOf(source: Checkout, mutator: (draft: MutableModel<Checkout, CheckoutMetaData>) => MutableModel<Checkout, CheckoutMetaData> | void): Checkout;
 }
 
 export declare class Banner {

@@ -1,3 +1,23 @@
+type Checkout @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  email: String
+  firstName: String
+  lastName: String
+  address: String
+  apartment: String
+  city: String
+  country: String
+  region: String
+  zip: String
+  phone: String
+  instructions: String
+  amount: String
+  status: String
+  cart: String
+  tracking: String
+  trackingID: String
+}
+
 type Banner @model @auth(rules: [{allow: public}]) {
   id: ID!
   content: String
