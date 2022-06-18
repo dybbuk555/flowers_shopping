@@ -65,7 +65,7 @@ export const footerNavigation: FooterType = {
     { name: "Contact", href: "/contact" },
     { name: "Shipping", href: "/shipping" },
     { name: "Returns", href: "/returns" },
-    { name: "Warranty", href: "/warranty" },
+    { name: "Tracking", href: "/tracking" },
   ],
   company: [
     { name: "Who we are", href: "/about-us" },

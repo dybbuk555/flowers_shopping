@@ -81,8 +81,7 @@ const CheckoutComponent = () => {
     instructions: yup
       .string()
       .min(2, "instructions should be of minimum 2 characters length")
-      .max(40, "instructions should be of maximum 280 characters length")
-      .required("instructions is required"),
+      .max(40, "instructions should be of maximum 280 characters length"),
 
     phone: yup
       .string()

@@ -73,9 +73,8 @@ const LandingPageComponent: NextPage = () => {
               <TrendingProducts />
 
               <div className="mt-12 px-4 sm:hidden">
-                <Link href="#">
+                <Link href="/collections/trending">
                   <a className="text-sm font-semibold text-green-600 hover:text-green-500">
-                    {" "}
                     See everything<span aria-hidden="true"> &rarr;</span>
                   </a>
                 </Link>

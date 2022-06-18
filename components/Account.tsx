@@ -46,14 +46,14 @@ const AccountComponent = (email: any) => {
                     {/* <div className="flex text-sm font-medium">
                       <a
                         href={item.slug}
-                        className="text-indigo-600 hover:text-indigo-500"
+                        className="text-green-600 hover:text-green-500"
                       >
                         Manage item
                       </a>
                       <div className="border-l border-gray-200 ml-4 pl-4 sm:ml-6 sm:pl-6">
                         <a
                           href={item.slug}
-                          className="text-indigo-600 hover:text-indigo-500"
+                          className="text-green-600 hover:text-green-500"
                         >
                           View Invoice
                         </a>
@@ -93,7 +93,7 @@ const AccountComponent = (email: any) => {
                       <div className="mt-6 space-y-4 sm:mt-0 sm:ml-6 sm:flex-none sm:w-40">
                         <button
                           type="button"
-                          className="w-full flex items-center justify-center bg-indigo-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
+                          className="w-full flex items-center justify-center bg-green-600 py-2 px-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:w-full sm:flex-grow-0"
                         >
                           <Link href={`/product/${product.slug}`}>
                             Buy again
@@ -101,7 +101,7 @@ const AccountComponent = (email: any) => {
                         </button>
                         {/* <button
                           type="button"
-                          className="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:w-full sm:flex-grow-0"
+                          className="w-full flex items-center justify-center bg-white py-2 px-2.5 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:w-full sm:flex-grow-0"
                         >
                           Shop similar
                         </button> */}
