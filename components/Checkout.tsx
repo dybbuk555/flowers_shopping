@@ -11,7 +11,6 @@ import * as yup from "yup";
 import "yup-phone";
 import { stripeCheckout } from "../lib/api-helper";
 import { DataStore } from "aws-amplify";
-import CheckoutApi from "../pages/api/checkout_sessions";
 import { Checkout } from "../src/models";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
@@ -146,8 +145,8 @@ const CheckoutComponent = () => {
                 await new Promise((resolve) => setTimeout(resolve, 500));
                 setLoading(true);
                 values.amount = JSON.stringify(finalPrice);
-                values.trackingID = `id-${Math.round(
-                  Math.random() * (10000 - 100 + 1) + 100
+                values.trackingID = `ID${Math.round(
+                  Math.random() * (100000 - 100 + 1) + 100
                 )}`;
                 try {
                   await DataStore.save(new Checkout(values));
@@ -159,9 +158,7 @@ const CheckoutComponent = () => {
                       quantity: 1,
                       currency: "usd",
                     },
-                    client_reference_id: `id-${Math.round(
-                      Math.random() * (10000 - 100 + 1) + 100
-                    )}`,
+                    client_reference_id: values.trackingID,
                     customer_email: values.email,
                   });
                 } catch (err: any) {

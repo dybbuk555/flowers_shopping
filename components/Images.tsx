@@ -7,7 +7,7 @@ export const LogoComponent = ({ height, width }: any) => {
       src={`https://res.cloudinary.com/fosuaa-whole-green-foods/image/upload/c_scale,w_${width},h_${height}/v1653917514/fosuaa/fosuaa_icon.webp`}
       alt="logo"
       height={height}
-      width={height}
+      width={width}
     />
   );
 };
@@ -112,6 +112,19 @@ export const CartProductImageComponent = ({ src, alt }: ImageType) => {
       alt={alt}
       height={94}
       width={94}
+      blurDataURL={src}
+      placeholder="blur"
+    />
+  );
+};
+
+export const AccountProductComponent = ({ src, alt }: ImageType) => {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      height={180}
+      width={180}
       blurDataURL={src}
       placeholder="blur"
     />

@@ -479,13 +479,12 @@ const HeaderComponent: NextPage = () => {
                     </button>
 
                     {/* Search */}
-                    <a
-                      href="#"
-                      className="ml-2 p-2 text-gray-400 hover:text-gray-500"
-                    >
-                      <span className="sr-only">Search</span>
-                      <SearchIcon className="w-6 h-6" aria-hidden="true" />
-                    </a>
+                    <Link href="/search/s">
+                      <div className="ml-2 p-2 text-gray-400 hover:text-gray-500 cursor">
+                        <span className="sr-only">Search</span>
+                        <SearchIcon className="w-6 h-6" aria-hidden="true" />
+                      </div>
+                    </Link>
                   </div>
 
                   {/* Logo (lg-) */}
@@ -500,16 +499,15 @@ const HeaderComponent: NextPage = () => {
                     <div className="flex items-center lg:ml-8">
                       <div className="flex space-x-8">
                         <div className="hidden lg:flex">
-                          <a
-                            href="#"
-                            className="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                          >
-                            <span className="sr-only">Search</span>
-                            <SearchIcon
-                              className="w-6 h-6"
-                              aria-hidden="true"
-                            />
-                          </a>
+                          <Link href="/search/s">
+                            <div className="-m-2 p-2 text-gray-400 hover:text-gray-500">
+                              <span className="sr-only">Search</span>
+                              <SearchIcon
+                                className="w-6 h-6"
+                                aria-hidden="true"
+                              />
+                            </div>
+                          </Link>
                         </div>
 
                         <div className="flex">

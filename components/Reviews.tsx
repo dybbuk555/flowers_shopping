@@ -34,7 +34,7 @@ const ReviewsComponent = () => {
                     {review.createdAt &&
                       format(
                         new Date(review.createdAt as unknown as number),
-                        "MM/dd/yyyy"
+                        "MMM dd yyyy"
                       )}
                   </time>
                 </div>

@@ -5,6 +5,7 @@ import { ProductsType } from "../../lib/types";
 import MetaComponent from "../../components/Meta";
 import { BRAND_NAME, BRAND_URL } from "../../lib";
 import PageNotFound from "../404";
+import AdditionsComponent from "../../components/Additions";
 
 const Product = (data: ProductsType) => {
   return (
@@ -21,6 +22,7 @@ const Product = (data: ProductsType) => {
             />
           ))}
           <ProductComponent {...data} />
+          <AdditionsComponent/>
         </>
       )}
     </>

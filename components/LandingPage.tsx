@@ -39,7 +39,6 @@ const LandingPageComponent: NextPage = () => {
                       <div className="mt-6">
                         <Link href="/collections/fish">
                           <a className="inline-block bg-green-600 border border-transparent py-3 px-8 rounded-md font-medium text-white hover:bg-green-700">
-                            {" "}
                             {BRAND_BUTTON_TEXT}
                           </a>
                         </Link>
