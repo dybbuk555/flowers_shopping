@@ -2,9 +2,9 @@ import React, { useEffect, useState, Fragment } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import localforage from "localforage";
-import { CartContentType, CurrencyType, ValuesType } from "../lib/types";
+import { CartContentType, CurrencyType } from "../lib/types";
 import { classNames, deliveryMethods, regionList } from "../lib";
-import { Formik, Field, Form, useFormikContext } from "formik";
+import { Formik, Field, Form } from "formik";
 import NotificationComponent from "./Notification";
 import { signIn, useSession } from "next-auth/react";
 import * as yup from "yup";
@@ -27,7 +27,15 @@ const CheckoutComponent = () => {
   const [deliveryPrice, setDeliveryPrice] = React.useState(0);
   const { data: session } = useSession();
   const userEmail = session && session?.user?.email ? session?.user?.email : "";
-  const initValues: ValuesType = {
+  // const userPhone = session && session?.user?.phone_number ? session?.user?.phone_number : "";
+  const userPhone = "";
+  const phoneRegExp =
+    /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+
+  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_KEY as unknown as string;
+
+  const [open, setOpen] = useState(false);
+  const [values, setValues] = useState<any>({
     email: userEmail,
     firstName: "",
     lastName: "",
@@ -36,7 +44,7 @@ const CheckoutComponent = () => {
     city: "",
     region: "Greater Accra",
     phone: "",
-    senderPhone: "",
+    senderPhone: userPhone,
     note: "",
     instructions: "",
     amount: "",
@@ -45,14 +53,7 @@ const CheckoutComponent = () => {
     tracking: "Order placed",
     trackingID: "",
     deliveryDate: "",
-  };
-  const [changeValues, setChangeValues] = useState(initValues);
-  const [initialValues, setInitialValues] = useState(initValues);
-  const phoneRegExp =
-    /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-  const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_KEY as unknown as string;
-  const [open, setOpen] = useState(false);
-  const [values, setValues] = useState(initValues);
+  });
 
   const ValidationSchema = yup.object().shape({
     email: yup.string().email("Enter a valid email"),
@@ -115,25 +116,6 @@ const CheckoutComponent = () => {
     deliveryDate: yup.date().required("Date of delivery is required"),
   });
 
-  const FormObserver: React.FC = () => {
-    const { values } = useFormikContext() as any;
-    React.useEffect(() => {
-      setChangeValues(values);
-    }, [values]);
-    return null;
-  };
-
-  const checkLocalStorageForPrevOrder = async () => {
-    try {
-      const value = await localforage.getItem("prevOrder");
-      if (value) {
-        setInitialValues(value as ValuesType);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const fetchCartContent = async () => {
     try {
       const data: any = [];
@@ -152,6 +134,26 @@ const CheckoutComponent = () => {
   const finalPrice =
     deliveryPrice + totalPrice + 0.0195 * (deliveryPrice + totalPrice);
 
+  const initialValues = {
+    email: userEmail,
+    firstName: "",
+    lastName: "",
+    address: "",
+    apartment: "",
+    city: "",
+    region: "Greater Accra",
+    phone: "",
+    senderPhone: userPhone,
+    note: "",
+    instructions: "",
+    amount: "",
+    cart: JSON.stringify(products),
+    status: "Not paid",
+    tracking: "Order placed",
+    trackingID: "",
+    deliveryDate: "",
+  };
+
   const completeCheckout = async () => {
     try {
       setOpen(false);
@@ -169,7 +171,7 @@ const CheckoutComponent = () => {
       await adminUpdateMail(
         `${process.env.NEXT_PUBLIC_ADMIN_ONE!}, ${process.env
           .NEXT_PUBLIC_ADMIN_TWO!}`,
-        values.deliveryDate!
+        values.deliveryDate
       );
     } catch (error) {
       console.log(error);
@@ -191,7 +193,6 @@ const CheckoutComponent = () => {
 
   useEffect(() => {
     fetchCartContent();
-    // checkLocalStorageForPrevOrder();
   }, []);
 
   return (
@@ -236,7 +237,6 @@ const CheckoutComponent = () => {
                 try {
                   setValues(values);
                   setOpen(true);
-                  // localforage.setItem("prevOrder", values);
                 } catch (err: any) {
                   console.log(err);
                 } finally {
@@ -246,7 +246,6 @@ const CheckoutComponent = () => {
             >
               {({ errors, touched }) => (
                 <Form className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
-                  <FormObserver />
                   <div>
                     <div>
                       <h2 className="text-lg font-medium text-gray-900">
