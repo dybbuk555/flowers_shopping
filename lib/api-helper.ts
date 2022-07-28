@@ -1,4 +1,10 @@
-export const orderUpdateMail = async (to: string, tracking: string) => {
+export const orderUpdateMail = async (
+  to: string,
+  tracking: string,
+  firstName: string,
+  address: string,
+  deliveryDate: string
+) => {
   try {
     const response = await fetch(`/api/sendOrderSuccessMail`, {
       method: "POST",
@@ -6,9 +12,13 @@ export const orderUpdateMail = async (to: string, tracking: string) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        fromEmail: "ordercreated@flowersghana.com",
+        fromEmail: "receipts-noreply@flowersghana.com",
         toEmail: to,
         tracking: tracking,
+        firstName: firstName,
+        address: address,
+        deliveryDate: deliveryDate,
+        replyEmail: "cassidyblay@gmail.com",
       }),
     });
     const result = await response.json();
@@ -27,7 +37,7 @@ export const adminUpdateMail = async (to: string, delivery: string) => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        fromEmail: "neworder@flowersghana.com",
+        fromEmail: "neworder-noreply@flowersghana.com",
         toEmail: to,
         delivery: delivery,
       }),

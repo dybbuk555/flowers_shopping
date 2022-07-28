@@ -110,8 +110,6 @@ const ProductComponent = (data: ProductsType) => {
                     className="mt-6 flex items-center cursor"
                     onClick={() =>
                       toggleShare({
-                        title: `${product.title}`,
-                        text: `${product.description}`,
                         url: `https://www.flowersghana.com/product/${product.slug}`,
                       })
                     }

@@ -105,5 +105,7 @@ export type ValuesType = {
   status: string;
   tracking: string;
   trackingID: string;
-  calendar: string;
+  calendar?: string;
+  deliveryDate?: string;
+  senderPhone?: string;
 };

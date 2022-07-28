@@ -25,7 +25,8 @@ const AddToCartComponent = (product: ProductType) => {
     quantity: yup
       .number()
       .min(1, "Minimum quantity is 1")
-      .max(1000, "Maximum quantity is 1000"),
+      .max(1000, "Maximum quantity is 1000")
+      .required("Please select a quantity"),
   });
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const AddToCartComponent = (product: ProductType) => {
             localforage.setItem(product.title, {
               image: product.img,
               title: product.title,
-              price: (parseInt(product.amount) * values.quantity),
+              price: parseInt(product.amount) * values.quantity,
               quantity: values.quantity,
               availabilty: product.availability,
               slug: product.slug,
