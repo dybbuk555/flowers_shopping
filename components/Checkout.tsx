@@ -4,7 +4,7 @@ import { CheckCircleIcon } from "@heroicons/react/solid";
 import localforage from "localforage";
 import { CartContentType, CurrencyType } from "../lib/types";
 import { classNames, deliveryMethods, regionList } from "../lib";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, useFormikContext } from "formik";
 import NotificationComponent from "./Notification";
 import { signIn, useSession } from "next-auth/react";
 import * as yup from "yup";
@@ -15,6 +15,7 @@ import { PaystackButton } from "react-paystack";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import { adminUpdateMail, orderUpdateMail } from "../lib/api-helper";
+import { format, subDays } from "date-fns";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
 
@@ -22,6 +23,15 @@ const CheckoutComponent = () => {
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
   );
+  const [changeValues, setChangeValues] = useState<any>();
+  const FormObserver: React.FC = () => {
+    const { values } = useFormikContext() as any;
+    React.useEffect(() => {
+      setChangeValues(values);
+    }, [values]);
+    return null;
+  };
+
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = React.useState<any>(null);
   const [deliveryPrice, setDeliveryPrice] = React.useState(0);
@@ -113,7 +123,31 @@ const CheckoutComponent = () => {
       .matches(phoneRegExp, "Your phone number is not valid")
       .required("Phone number is required"),
 
-    deliveryDate: yup.date().required("Date of delivery is required"),
+    deliveryDate: yup
+      .date()
+      .required("Date of delivery is required")
+      .test(
+        "isSunday",
+        "We do not work on Sundays. Please select a different date",
+        (value: Date | undefined) => {
+          return value!?.getDay() !== 0;
+        }
+      )
+      .min(subDays(new Date(), 1), "Please select a future date")
+      .test(
+        "isAfter5pm",
+        "We are closed for today. We do not work after 5pm. Please select a different date",
+        (value: Date | undefined) => {
+          if (value) {
+            const today = new Date();
+            const time = today.getHours();
+            if (value.getDate() === today.getDate() && time >= 17) {
+              return false;
+            }
+          }
+          return true;
+        }
+      ),
   });
 
   const fetchCartContent = async () => {
@@ -246,6 +280,7 @@ const CheckoutComponent = () => {
             >
               {({ errors, touched }) => (
                 <Form className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+                  <FormObserver />
                   <div>
                     <div>
                       <h2 className="text-lg font-medium text-gray-900">
@@ -338,7 +373,10 @@ const CheckoutComponent = () => {
                           htmlFor="email-address"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Note
+                          Note{" "}
+                          <small className="text-gray-500">
+                            (we will write it on the greeting card)
+                          </small>
                         </label>
                         <div className="mt-1">
                           <Field
@@ -556,6 +594,18 @@ const CheckoutComponent = () => {
                                 {errors.region}
                               </span>
                             )}
+
+                            {changeValues?.region &&
+                              changeValues.region !== "Greater Accra" &&
+                              changeValues.region !== "Ashanti" && (
+                                <span className="text-red-500 hover:text-red-700">
+                                  We will attempt to deliver to{" "}
+                                  {changeValues?.region} Region, however, note
+                                  that we are not able to do so all the time. A
+                                  refund shall be made to you in the case
+                                  delivery is unlikely.
+                                </span>
+                              )}
                           </div>
                         </div>
 
