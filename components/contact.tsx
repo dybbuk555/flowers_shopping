@@ -48,7 +48,7 @@ const ContactComponent = () => {
                       <dt className="sr-only">Phone number</dt>
                       <dd>
                         <Link href="tel:+2330500373643">
-                          +233( 50) 037-3643
+                          +233 (50) 037-3643
                         </Link>
                       </dd>
                     </div>

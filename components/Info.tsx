@@ -118,9 +118,10 @@ const InfoComponent = (info: InfosType) => {
                   {detail.title}
                 </span>
               </h1>
-              <p className="mt-8 text-xl text-gray-500 leading-8">
-                {detail.content}
-              </p>
+              <p
+                className="mt-8 text-xl text-gray-500 leading-8"
+                dangerouslySetInnerHTML={{ __html: detail.content }}
+              ></p>
             </div>
           ))}
         </div>
