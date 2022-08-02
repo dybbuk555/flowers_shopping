@@ -13,7 +13,7 @@ const ContactComponent = () => {
               <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
                 <div>
                   <h3 className="text-lg leading-6 font-medium text-gray-900">
-                   Enquiries
+                    Enquiries
                   </h3>
                   <dl className="mt-2 text-base text-gray-500">
                     <div>
@@ -22,7 +22,9 @@ const ContactComponent = () => {
                     </div>
                     <div className="mt-1">
                       <dt className="sr-only">Phone number</dt>
-                      <dd><Link href="tel:+233242877574">+233 (24) 287-7574</Link></dd>
+                      <dd>
+                        <Link href="tel:+233242877574">+233 (24) 287-7574</Link>
+                      </dd>
                     </div>
                   </dl>
                   <dl className="mt-2 text-base text-gray-500">
@@ -32,7 +34,9 @@ const ContactComponent = () => {
                     </div>
                     <div className="mt-1">
                       <dt className="sr-only">Phone number</dt>
-                      <dd><Link href="tel:+14155256471">+1 (415) 525-6471</Link></dd>
+                      <dd>
+                        <Link href="tel:+14155256471">+1 (415) 525-6471</Link>
+                      </dd>
                     </div>
                   </dl>
                   <dl className="mt-2 text-base text-gray-500">
@@ -42,11 +46,14 @@ const ContactComponent = () => {
                     </div>
                     <div className="mt-1">
                       <dt className="sr-only">Phone number</dt>
-                      <dd><Link href="tel:+233263422662">+233 (26) 342-2662</Link></dd>
+                      <dd>
+                        <Link href="tel:+2330500373643">
+                          +233( 50) 037-3643
+                        </Link>
+                      </dd>
                     </div>
                   </dl>
                 </div>
-              
               </div>
             </div>
             <div className="mt-16 pt-16 lg:grid lg:grid-cols-3 lg:gap-8">
@@ -75,8 +82,10 @@ const ContactComponent = () => {
                   <div className="mt-2 text-base text-gray-500">
                     <p>KNUST</p>
                   </div>
+                  <div className="mt-2 text-base text-gray-500">
+                    <p>Patasi</p>
+                  </div>
                 </div>
-              
               </div>
             </div>
           </div>
