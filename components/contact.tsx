@@ -22,7 +22,7 @@ const ContactComponent = () => {
                     </div>
                     <div className="mt-1">
                       <dt className="sr-only">Phone number</dt>
-                      <dd><Link href="tel:+233242877574">+233 (242) 877574</Link></dd>
+                      <dd><Link href="tel:+233242877574">+233 (24) 287-7574</Link></dd>
                     </div>
                   </dl>
                   <dl className="mt-2 text-base text-gray-500">
@@ -32,7 +32,17 @@ const ContactComponent = () => {
                     </div>
                     <div className="mt-1">
                       <dt className="sr-only">Phone number</dt>
-                      <dd><Link href="tel:+233209859591">+233 (242) 877574</Link></dd>
+                      <dd><Link href="tel:+14155256471">+1 (415) 525-6471</Link></dd>
+                    </div>
+                  </dl>
+                  <dl className="mt-2 text-base text-gray-500">
+                    <div>
+                      <dt className="sr-only">Contact name</dt>
+                      <dd>Jerian</dd>
+                    </div>
+                    <div className="mt-1">
+                      <dt className="sr-only">Phone number</dt>
+                      <dd><Link href="tel:+233263422662">+233 (26) 342-2662</Link></dd>
                     </div>
                   </dl>
                 </div>
