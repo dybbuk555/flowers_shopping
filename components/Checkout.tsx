@@ -15,7 +15,7 @@ import { PaystackButton } from "react-paystack";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import { adminUpdateMail, orderUpdateMail } from "../lib/api-helper";
-import { format, subDays } from "date-fns";
+import { subDays } from "date-fns";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
 
@@ -35,6 +35,7 @@ const CheckoutComponent = () => {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = React.useState<any>(null);
   const [deliveryPrice, setDeliveryPrice] = React.useState(0);
+  const [openFinal, setOpenFinal] = React.useState(false);
   const { data: session } = useSession();
   const userEmail = session && session?.user?.email ? session?.user?.email : "";
   // const userPhone = session && session?.user?.phone_number ? session?.user?.phone_number : "";
@@ -190,6 +191,7 @@ const CheckoutComponent = () => {
 
   const completeCheckout = async () => {
     try {
+      setOpenFinal(true);
       setOpen(false);
       values.status = "Paid";
       await DataStore.save(new CheckoutNew(values));
@@ -895,6 +897,18 @@ const CheckoutComponent = () => {
           </div>
         </Dialog>
       </Transition.Root>
+
+      {openFinal && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-black opacity-90 flex flex-col items-center justify-center">
+          <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+          <h2 className="text-center text-white text-xl font-semibold">
+            Verifying order details...
+          </h2>
+          <p className="w-1/3 text-center text-white">
+            This may take a few seconds, please do not close this page.
+          </p>
+        </div>
+      )}
     </>
   );
 };
