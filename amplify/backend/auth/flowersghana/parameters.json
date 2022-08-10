@@ -4,13 +4,13 @@
   "serviceType": "imported",
   "region": "us-east-1",
   "aliasAttributes": [
-    "email"
+    "email",
+    "phone_number"
   ],
-  "authProvidersUserPool": [
-    "Google"
-  ],
+  "authProvidersUserPool": [],
   "requiredAttributes": [
-    "email"
+    "email",
+    "phone_number"
   ],
   "passwordPolicyMinLength": 8,
   "passwordPolicyCharacters": [

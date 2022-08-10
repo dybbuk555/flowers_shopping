@@ -36,7 +36,6 @@ function MyApp({
         </>
       )}
       <FooterComponent />
-      {/* <ScriptsComponent /> */}
       <ScriptsComponent />
     </SessionProvider>
   );

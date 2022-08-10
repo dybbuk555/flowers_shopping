@@ -14,10 +14,10 @@
     "categories": {
       "auth": {
         "flowersghana": {
-          "userPoolId": "us-east-1_CtFFhgDSv",
-          "userPoolName": "fosuaa",
-          "webClientId": "4kk9svakp66d7kj8af2357hhp",
-          "nativeClientId": "4kk9svakp66d7kj8af2357hhp"
+          "userPoolId": "us-east-1_ZVsdeeBJx",
+          "userPoolName": "flowersghana.com",
+          "webClientId": "1g962jsp0faulfc7cu3lsnmtg",
+          "nativeClientId": "1g962jsp0faulfc7cu3lsnmtg"
         }
       }
     }

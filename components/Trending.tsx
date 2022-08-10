@@ -4,7 +4,7 @@ import { Bouquets } from "../src/models";
 import { useDataWithFilter } from "../lib/hooks";
 
 const TrendingProducts: NextPage = () => {
-  const products: Bouquets[] = useDataWithFilter(Bouquets, 12);
+  const products: Bouquets[] = useDataWithFilter(Bouquets, 16);
 
   return (
     <>

@@ -17,7 +17,6 @@
         "type": "AUTOMERGE"
       }
     },
-    "apiName": "flowersghana",
-    "gqlSchemaPath": "/tmp/amplify-542cfb5f-01b8-45b9-a200-05ab020bdf89/amplify/backend/api/flowersghana/schema.graphql"
+    "apiName": "flowersghana"
   }
 }

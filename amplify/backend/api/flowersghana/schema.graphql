@@ -86,5 +86,4 @@ type Bouquets @model @auth(rules: [{allow: public}]) {
   slug: String
   tags: String
   category: String
-}
- 
+} 

@@ -1,4 +1,3 @@
-
 New installment of the [FlowersGhana](https://flowersghana.com) website.
 
 ## Technologies
@@ -29,9 +28,12 @@ yarn dev
 
 - You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
+- Replace the `.env.example` with `.env.local` and provide the appropraite values.
+
 - Visit [AWS Amplify console](https://console.aws.amazon.com/amplify/) to set up Amplify to connect with your version.
 
+- Set up your AWS DynamoDb models using the structure found in `src/models` folder.
 
 ## Addition
 
-I am working towards breaking down components and deploying to npm for installation. Check back later for instructions to install resources.
+Shoot me an email with your questions or create a discusstion. I am working towards breaking down components and deploying to npm for installation. Check back later for instructions to install resources.
