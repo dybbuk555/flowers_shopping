@@ -196,7 +196,9 @@ const CheckoutComponent = () => {
       values.status = "Paid";
       await DataStore.save(new CheckoutNew(values));
       await localforage.clear();
-      localStorage.clear();
+    } catch (error) {
+      console.log(error);
+    } finally {
       await orderUpdateMail(
         values.email,
         values.trackingID,
@@ -206,12 +208,9 @@ const CheckoutComponent = () => {
       );
       await adminUpdateMail(
         `${process.env.NEXT_PUBLIC_ADMIN_ONE!}, ${process.env
-          .NEXT_PUBLIC_ADMIN_TWO!}`,
+          .NEXT_PUBLIC_ADMIN_TWO!}, ${process.env.NEXT_PUBLIC_ADMIN_THREE!}`,
         values.deliveryDate
       );
-    } catch (error) {
-      console.log(error);
-    } finally {
       location.replace(`/result?trackingID=${values.trackingID}`);
     }
   };
