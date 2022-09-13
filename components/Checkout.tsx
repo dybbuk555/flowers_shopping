@@ -904,7 +904,7 @@ const CheckoutComponent = () => {
             Verifying order details...
           </h2>
           <p className="w-1/3 text-center text-white">
-            This may take a few seconds, please do not close this page.
+            PLEASE WAIT. STAY ON THIS PAGE. The process could take up to a few seconds.
           </p>
         </div>
       )}
