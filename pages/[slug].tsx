@@ -26,7 +26,7 @@ const Info = (data: InfosType) => {
 
 export default Info;
 
-export async function getServerSideProps({ req, params }: any) {
+export async function getStaticProps({ req, params }: any) {
   const SSR = withSSRContext({ req });
   const data = await SSR.DataStore.query(InfoPages, (item: any) =>
     item.page("eq", params.slug)
@@ -36,5 +36,12 @@ export async function getServerSideProps({ req, params }: any) {
 
   return {
     props: { infos: JSON.parse(JSON.stringify(data)) },
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
   };
 }

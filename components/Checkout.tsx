@@ -195,10 +195,6 @@ const CheckoutComponent = () => {
       setOpen(false);
       values.status = "Paid";
       await DataStore.save(new CheckoutNew(values));
-      await localforage.clear();
-    } catch (error) {
-      console.log(error);
-    } finally {
       await orderUpdateMail(
         values.email,
         values.trackingID,
@@ -211,6 +207,10 @@ const CheckoutComponent = () => {
           .NEXT_PUBLIC_ADMIN_TWO!}, ${process.env.NEXT_PUBLIC_ADMIN_THREE!}`,
         values.deliveryDate
       );
+      await localforage.clear();
+    } catch (error) {
+      console.log(error);
+    } finally {
       location.replace(`/result?trackingID=${values.trackingID}`);
     }
   };
@@ -904,7 +904,8 @@ const CheckoutComponent = () => {
             Verifying order details...
           </h2>
           <p className="w-1/3 text-center text-white">
-            PLEASE WAIT. STAY ON THIS PAGE. The process could take up to a few seconds.
+            PLEASE WAIT. STAY ON THIS PAGE. The process could take up to a few
+            seconds.
           </p>
         </div>
       )}

@@ -66,7 +66,7 @@ export const footerNavigation: FooterType = {
     { name: "Instagram", href: "https://instagram.com/flowerghana" },
     {
       name: "WhatsApp",
-      href: "https://api.whatsapp.com/send?phone=233242877574",
+      href: "https://api.whatsapp.com/send?phone=14155256471",
     },
     { name: "Facebook", href: "https://facebook.com/flowerghana" },
 

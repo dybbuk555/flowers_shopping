@@ -17,13 +17,13 @@ const Product = (data: ProductsType) => {
           {data.products.map((product, i: number) => (
             <MetaComponent
               key={i}
-              title={`${product.title} | ${BRAND_NAME}`}
+              title={`${product.title} - ₵${product.amount} | ${BRAND_NAME}`}
               image={`https://res.cloudinary.com/deyudesls/image/upload/${product.img}`}
               description={product.description}
             />
           ))}
           <ProductComponent {...data} />
-          <AdditionsComponent/>
+          <AdditionsComponent />
         </>
       )}
     </>
@@ -32,7 +32,7 @@ const Product = (data: ProductsType) => {
 
 export default Product;
 
-export async function getServerSideProps({ req, params }: any) {
+export async function getStaticProps({ req, params }: any) {
   const SSR = withSSRContext({ req });
   const data = await SSR.DataStore.query(Bouquets, (item: any) =>
     item.slug("eq", params.slug)
@@ -42,5 +42,12 @@ export async function getServerSideProps({ req, params }: any) {
 
   return {
     props: { products: JSON.parse(JSON.stringify(data)), slug: params.slug },
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
   };
 }

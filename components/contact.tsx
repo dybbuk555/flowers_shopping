@@ -86,6 +86,16 @@ const ContactComponent = () => {
                     <p>Patasi</p>
                   </div>
                 </div>
+
+                <div>
+                  <h3 className="text-lg leading-6 font-medium text-gray-900">
+                    Takoradi
+                  </h3>
+                  {/* <div className="mt-2 text-base text-gray-500">
+                    <p>KNUST</p>
+                  </div> */}
+                
+                </div>
               </div>
             </div>
           </div>

@@ -25,7 +25,7 @@ const Collections = (data: ProductsType) => {
 
 export default Collections;
 
-export async function getServerSideProps({ req, params }: any) {
+export async function getStaticProps({ req, params }: any) {
   const SSR = withSSRContext({ req });
   const data = await SSR.DataStore.query(Bouquets, (item: any) =>
     item.or((item: any) =>
@@ -37,5 +37,12 @@ export async function getServerSideProps({ req, params }: any) {
 
   return {
     props: { products: JSON.parse(JSON.stringify(data)), slug: params.slug },
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
   };
 }

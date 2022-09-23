@@ -13,12 +13,19 @@ const Search = (data:any) => {
 
 export default Search;
 
-export async function getServerSideProps(context: any) {
+export async function getStaticProps(context: any) {
  
   
     return {
       props: {
         props: { slug: context.query.slug },
       },
+    };
+  }
+
+  export async function getStaticPaths() {
+    return {
+      paths: [],
+      fallback: "blocking",
     };
   }
