@@ -1,5 +1,6 @@
 import Fuse from "fuse.js";
 import _ from "lodash";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import { useData } from "../lib/hooks";
@@ -67,25 +68,23 @@ const SearchComponent = (data: any) => {
             {result && result.length > 0 ? (
               <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
                 {result.map((product: any, i: number) => (
-                  <a
-                    key={i}
-                    href={`/product/${product.item.slug}`}
-                    className="group"
-                  >
-                    <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
-                      <CategoryImageComponent
-                        src={product.item.img}
-                        alt={`${product.item.title} image`}
-                      />
-                    </div>
-                    <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
-                      <h3>{product.item.title}</h3>
-                      <p>₵{product.item.amount}</p>
-                    </div>
-                    <p className="mt-1 text-sm italic text-gray-500">
-                      {product.item.availability}
-                    </p>
-                  </a>
+                  <Link key={i} href={`/product/${product.item.slug}`}>
+                    <span className="group cursor">
+                      <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
+                        <CategoryImageComponent
+                          src={product.item.img}
+                          alt={`${product.item.title} image`}
+                        />
+                      </div>
+                      <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
+                        <h3>{product.item.title}</h3>
+                        <p>₵{product.item.amount}</p>
+                      </div>
+                      <p className="mt-1 text-sm italic text-gray-500">
+                        {product.item.availability}
+                      </p>
+                    </span>
+                  </Link>
                 ))}
               </div>
             ) : (

@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { FeaturedImageComponent } from "./Images";
 import { Bouquets } from "../src/models";
 import { useDataWithFilter } from "../lib/hooks";
+import Link from "next/link";
 
 const TrendingProducts: NextPage = () => {
   const products: Bouquets[] = useDataWithFilter(Bouquets, 16);
@@ -19,8 +20,8 @@ const TrendingProducts: NextPage = () => {
                 key={product.id}
                 className="w-64 inline-flex flex-col text-center lg:w-auto"
               >
-                <a href={`/product/${product.slug}`}>
-                  <div className="group relative">
+                <Link href={`/product/${product.slug}`}>
+                  <div className="group relative cursor">
                     <div className="w-full bg-gray-200 rounded-md overflow-hidden aspect-w-1 aspect-h-1">
                       <FeaturedImageComponent
                         src={product.img as unknown as string}
@@ -32,9 +33,9 @@ const TrendingProducts: NextPage = () => {
                         </div>
                       </div>
                     </div>
+                    <br />
                   </div>
-                  <br />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
