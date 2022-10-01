@@ -18,7 +18,6 @@ import Banner from "./Banner";
 const HeaderComponent: NextPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { data: session } = useSession();
-  
 
   return (
     <>
@@ -107,12 +106,11 @@ const HeaderComponent: NextPage = () => {
                               >
                                 {category.featured.map((item) => (
                                   <li key={item.name} className="flex">
-                                    <a
-                                      href={item.href}
-                                      className="text-gray-500"
-                                    >
-                                      {item.name}
-                                    </a>
+                                    <Link href={item.href}>
+                                      <span className="text-gray-500 cursor">
+                                        {item.name}
+                                      </span>
+                                    </Link>
                                   </li>
                                 ))}
                               </ul>
@@ -133,12 +131,11 @@ const HeaderComponent: NextPage = () => {
                               >
                                 {category.collection.map((item) => (
                                   <li key={item.name} className="flex">
-                                    <a
-                                      href={item.href}
-                                      className="text-gray-500"
-                                    >
-                                      {item.name}
-                                    </a>
+                                    <Link href={item.href}>
+                                      <span className="text-gray-500 cursor">
+                                        {item.name}
+                                      </span>
+                                    </Link>
                                   </li>
                                 ))}
                               </ul>
@@ -153,12 +150,11 @@ const HeaderComponent: NextPage = () => {
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
-                      <a
-                        href={page.href}
-                        className="-m-2 p-2 block font-medium text-gray-900"
-                      >
-                        {page.name}
-                      </a>
+                      <Link href={page.href}>
+                        <span className="-m-2 p-2 block font-medium text-gray-900 cursor">
+                          {page.name}
+                        </span>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -402,12 +398,11 @@ const HeaderComponent: NextPage = () => {
                                                       key={item.name}
                                                       className="flex"
                                                     >
-                                                      <a
-                                                        href={item.href}
-                                                        className="hover:text-gray-800"
-                                                      >
-                                                        {item.name}
-                                                      </a>
+                                                      <Link href={item.href}>
+                                                        <span className="hover:text-gray-800 cursor">
+                                                          {item.name}
+                                                        </span>
+                                                      </Link>
                                                     </li>
                                                   )
                                                 )}
@@ -433,12 +428,11 @@ const HeaderComponent: NextPage = () => {
                                                       key={item.name}
                                                       className="flex"
                                                     >
-                                                      <a
-                                                        href={item.href}
-                                                        className="hover:text-gray-800"
-                                                      >
-                                                        {item.name}
-                                                      </a>
+                                                      <Link href={item.href}>
+                                                        <span className="hover:text-gray-800 cursor">
+                                                          {item.name}
+                                                        </span>
+                                                      </Link>
                                                     </li>
                                                   )
                                                 )}
@@ -456,13 +450,11 @@ const HeaderComponent: NextPage = () => {
                         ))}
 
                         {navigation.pages.map((page) => (
-                          <a
-                            key={page.name}
-                            href={page.href}
-                            className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                          >
-                            {page.name}
-                          </a>
+                          <Link key={page.name} href={page.href}>
+                            <span className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 cursor">
+                              {page.name}
+                            </span>
+                          </Link>
                         ))}
                       </div>
                     </Popover.Group>
