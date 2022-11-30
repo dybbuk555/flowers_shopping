@@ -158,7 +158,18 @@ const ProductComponent = (data: ProductsType) => {
               </div>
 
               {/* Product form */}
-              <AddToCartComponent {...product} />
+              {product.availability === "In stock" ? (
+                <AddToCartComponent {...product} />
+              ) : (
+                <div className="mt-10">
+                  <button
+                    className={`w-full  bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500" border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white `}
+                    disabled
+                  >
+                    Out of stock
+                  </button>
+                </div>
+              )}
             </Fragment>
           ))}
         </div>

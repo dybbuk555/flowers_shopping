@@ -70,6 +70,7 @@ export type CartContentType = {
   availability: string;
   slug: string;
   quantity: number;
+  category: string;
 };
 
 export type Context = {

@@ -62,7 +62,13 @@ const CartItemsComponent = () => {
                     </h3>
                     <p className="ml-4">₵{product.price}</p>
                   </div>
-                  <p className="mt-1 text-sm text-gray-500">
+                  <p
+                    className={`mt-1 text-sm ${
+                      product.availability === "Out of stock"
+                        ? "text-red-500"
+                        : "text-gray-500"
+                    } `}
+                  >
                     {product.availability}
                   </p>
                 </div>
@@ -88,17 +94,32 @@ const CartItemsComponent = () => {
               <p>₵{totalPrice}</p>
             </div>
             <p className="mt-0.5 text-sm text-gray-500">
-              Shipping and taxes calculated at checkout.
+              Delivery fee and taxes calculated at checkout.
             </p>
             <div className="mt-6">
-              <Link href="/checkout">
-                <div
-                  onClick={() => setOpen(!open)}
-                  className="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-700 cursor"
-                >
-                  Checkout
-                </div>
-              </Link>
+              {products?.every(
+                (product: CartContentType) => product.category === "add-on"
+              ) ? (
+                <>
+                  <p className="mb-2 text-lg text-red-500">
+                    Exclusive sales of add-ons are not available for checkout.
+                    Please add a bouquet to your cart or remove add-ons to
+                    checkout.
+                  </p>
+                  <div className="flex items-center justify-center rounded-md border border-transparent bg-red-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-red-700 cursor">
+                    Checkout Not Available
+                  </div>
+                </>
+              ) : (
+                <Link href="/checkout">
+                  <div
+                    onClick={() => setOpen(!open)}
+                    className="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-700 cursor"
+                  >
+                    Checkout
+                  </div>
+                </Link>
+              )}
             </div>
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>

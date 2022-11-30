@@ -47,8 +47,9 @@ const AddToCartComponent = (product: ProductType) => {
               title: product.title,
               price: parseInt(product.amount) * values.quantity,
               quantity: values.quantity,
-              availabilty: product.availability,
+              availability: product.availability,
               slug: product.slug,
+              category: product.category,
             });
           } catch (error) {
             console.log(error);
