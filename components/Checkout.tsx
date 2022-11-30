@@ -31,14 +31,14 @@ const CheckoutComponent = () => {
     }, [values]);
     return null;
   };
-
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = React.useState<any>(null);
   const [deliveryPrice, setDeliveryPrice] = React.useState(0);
   const [openFinal, setOpenFinal] = React.useState(false);
   const { data: session } = useSession();
   const userEmail = session && session?.user?.email ? session?.user?.email : "";
-  // const userPhone = session && session?.user?.phone_number ? session?.user?.phone_number : "";
+  const [discount, setDiscount] = useState(0);
+
   const userPhone = "";
   const phoneRegExp =
     /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
@@ -163,11 +163,33 @@ const CheckoutComponent = () => {
     }
   };
 
+  const useDataWithEmailFilter = () => {
+    fetchPosts();
+    async function fetchPosts() {
+      const getData: any = await DataStore.query(CheckoutNew, (item: any) =>
+        item.or((item: any) =>
+          item.email("eq", changeValues?.email || session?.user?.email || "")
+        )
+      );
+      if (getData.length > 3) {
+        setDiscount(0.05);
+      } else {
+        setDiscount(0);
+      }
+    }
+    const subscription = DataStore.observe(CheckoutNew).subscribe(() =>
+      fetchPosts()
+    );
+    return () => subscription.unsubscribe();
+  };
+
   const sum = products?.reduce((a: any, b: any) => a + b.price, 0);
   const totalPrice: number = sum ? sum : 0;
 
-  const finalPrice =
+  const withoutDiscount =
     deliveryPrice + totalPrice + 0.0195 * (deliveryPrice + totalPrice);
+
+  const finalPrice = withoutDiscount - withoutDiscount * discount;
 
   const initialValues = {
     email: userEmail,
@@ -225,6 +247,10 @@ const CheckoutComponent = () => {
     text: "Proceed to payment",
     onSuccess: () => completeCheckout(),
   };
+
+  useEffect(() => {
+    useDataWithEmailFilter();
+  }, [changeValues?.email || session?.user?.email]);
 
   useEffect(() => {
     fetchCartContent();
@@ -782,10 +808,26 @@ const CheckoutComponent = () => {
                         </div>
                         <div className="flex items-center justify-between">
                           <dt className="text-sm">Discount</dt>
+
                           <dd className="text-sm font-medium text-gray-900">
-                           5%
+                            {discount ? `-${discount * 100}%` : "0%"}
+
+                            <small className="text-xs text-gray-500">
+                              {" "}
+                              
+                              ₵{discount
+                                ? (discount * totalPrice).toFixed(2)
+                                : "0.00"} saved
+                            </small>
                           </dd>
                         </div>
+                        <div className="flex items-center justify-between">
+                          <small className="text-xs text-gray-500">
+                            Discount is automatically applied for our loyal
+                            customers with more than 3 previous orders.
+                          </small>
+                        </div>
+
                         <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                           <dt className="text-base font-medium">Total</dt>
                           <dd className="text-base font-medium text-gray-900">
