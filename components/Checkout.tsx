@@ -163,7 +163,7 @@ const CheckoutComponent = () => {
     }
   };
 
-  const useDataWithEmailFilter = () => {
+  const withEmailFilter = () => {
     fetchPosts();
     async function fetchPosts() {
       const getData: any = await DataStore.query(CheckoutNew, (item: any) =>
@@ -249,7 +249,7 @@ const CheckoutComponent = () => {
   };
 
   useEffect(() => {
-    useDataWithEmailFilter();
+    withEmailFilter();
   }, [changeValues?.email || session?.user?.email]);
 
   useEffect(() => {
