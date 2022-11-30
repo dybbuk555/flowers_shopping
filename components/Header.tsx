@@ -479,7 +479,7 @@ const HeaderComponent: NextPage = () => {
                     </button>
 
                     {/* Search */}
-                    <Link href="/search/z">
+                    <Link href="/search">
                       <div className="ml-2 p-2 text-gray-400 hover:text-gray-500 cursor">
                         <span className="sr-only">Search</span>
                         <SearchIcon className="w-6 h-6" aria-hidden="true" />
@@ -499,7 +499,7 @@ const HeaderComponent: NextPage = () => {
                     <div className="flex items-center lg:ml-8">
                       <div className="flex space-x-8">
                         <div className="hidden lg:flex">
-                          <Link href="/search/z">
+                          <Link href="/search">
                             <div className="-m-2 p-2 text-gray-400 hover:text-gray-500">
                               <span className="sr-only">Search</span>
                               <SearchIcon

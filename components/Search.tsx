@@ -12,7 +12,8 @@ const SearchComponent = (data: any) => {
   const searchItems = useData(Bouquets);
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
-  const slug = data.data;
+  const query = router.query.q as string;
+  // const query = data.data;
   const toString = JSON.stringify(searchItems);
   const toJson = JSON.parse(toString);
 
@@ -20,24 +21,23 @@ const SearchComponent = (data: any) => {
     includeScore: true,
     keys: ["title", "tags", "category", "description", "amount"],
   };
-
   const fuse = new Fuse(toJson, option);
 
-  const result = fuse.search(searchTerm);
+  const result = fuse.search(searchTerm || "budget");
 
   const enableSlug = useCallback(() => {
-    if (searchTerm !== "") {
-      router.push(searchTerm);
+    if (searchTerm) {
+      router.push(`?q=${searchTerm}`);
     } else {
-      if (slug) {
-        setSearchTerm(slug);
+      if (query) {
+        setSearchTerm(query);
       }
     }
-  }, [searchTerm]);
+  }, [searchTerm, query]);
 
   useEffect(() => {
     enableSlug();
-  }, [searchTerm]);
+  }, [searchTerm, query]);
 
   return (
     <>
