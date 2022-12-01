@@ -8,7 +8,7 @@ const Search = () => {
   const query = router.query.q;
   return (
     <>
-      <MetaComponent title={`Search '${query}' | ${BRAND_NAME}`} />
+      <MetaComponent title={`Find ${query ?? "an item"} | ${BRAND_NAME}`} />
       <SearchComponent />
     </>
   );

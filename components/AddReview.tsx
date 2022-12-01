@@ -5,9 +5,7 @@ import * as yup from "yup";
 import NotificationComponent from "./Notification";
 import { useState } from "react";
 
-const CustomReview = (props: any) => (
-  <textarea {...props} />
-);
+const CustomReview = (props: any) => <textarea {...props} />;
 
 const AddReviewComponent = () => {
   const [added, setAdded] = useState<Boolean>(false);
@@ -74,7 +72,7 @@ const AddReviewComponent = () => {
                     touched.name &&
                     "focus:ring-red-500 focus:border-red-500"
                   }  block w-full sm:text-sm border-gray-300 rounded-md`}
-                  placeholder="Jane Doe"
+                  placeholder="Enter your name"
                 />
                 {errors.name && touched.name && (
                   <span className="text-red-500 hover:text-red-700">
@@ -96,6 +94,7 @@ const AddReviewComponent = () => {
                   type="text"
                   rows={4}
                   id="review"
+                  placeholder="Write your review here"
                   className={`shadow-sm ${
                     errors.review &&
                     touched.review &&

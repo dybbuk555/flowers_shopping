@@ -217,18 +217,8 @@ const CheckoutComponent = () => {
       setOpen(false);
       values.status = "Paid";
       await DataStore.save(new CheckoutNew(values));
-      await orderUpdateMail(
-        values.email,
-        values.trackingID,
-        values.firstName,
-        values.address,
-        values.deliveryDate!
-      );
-      await adminUpdateMail(
-        `${process.env.NEXT_PUBLIC_ADMIN_ONE!}, ${process.env
-          .NEXT_PUBLIC_ADMIN_TWO!}, ${process.env.NEXT_PUBLIC_ADMIN_THREE!}`,
-        values.deliveryDate
-      );
+      await orderUpdateMail(values);
+      await adminUpdateMail(values);
       await localforage.clear();
     } catch (error) {
       console.log(error);
@@ -298,6 +288,7 @@ const CheckoutComponent = () => {
                 try {
                   setValues(values);
                   setOpen(true);
+                  await DataStore.save(new CheckoutNew(values));
                 } catch (err: any) {
                   console.log(err);
                 } finally {
@@ -814,10 +805,11 @@ const CheckoutComponent = () => {
 
                             <small className="text-xs text-gray-500">
                               {" "}
-                              
-                              ₵{discount
+                              ₵
+                              {discount
                                 ? (discount * totalPrice).toFixed(2)
-                                : "0.00"} saved
+                                : "0.00"}{" "}
+                              saved
                             </small>
                           </dd>
                         </div>

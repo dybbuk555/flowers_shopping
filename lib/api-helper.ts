@@ -1,10 +1,6 @@
-export const orderUpdateMail = async (
-  to: string,
-  tracking: string,
-  firstName: string,
-  address: string,
-  deliveryDate: string
-) => {
+import { ValuesType } from "./types";
+
+export const orderUpdateMail = async (values: ValuesType) => {
   try {
     const response = await fetch(`/api/sendOrderSuccessMail`, {
       method: "POST",
@@ -13,11 +9,7 @@ export const orderUpdateMail = async (
       },
       body: JSON.stringify({
         fromEmail: "receipts-noreply@flowersghana.com",
-        toEmail: to,
-        tracking: tracking,
-        firstName: firstName,
-        address: address,
-        deliveryDate: deliveryDate,
+        values: values,
         replyEmail: "cassidyblay@gmail.com",
       }),
     });
@@ -29,7 +21,7 @@ export const orderUpdateMail = async (
   }
 };
 
-export const adminUpdateMail = async (to: string, delivery: string) => {
+export const adminUpdateMail = async (values: ValuesType) => {
   try {
     const response = await fetch(`/api/alertAdmins`, {
       method: "POST",
@@ -38,8 +30,9 @@ export const adminUpdateMail = async (to: string, delivery: string) => {
       },
       body: JSON.stringify({
         fromEmail: "neworder-noreply@flowersghana.com",
-        toEmail: to,
-        delivery: delivery,
+        toEmail: `${process.env.NEXT_PUBLIC_ADMIN_ONE!}, ${process.env
+          .NEXT_PUBLIC_ADMIN_TWO!}, ${process.env.NEXT_PUBLIC_ADMIN_THREE!}`,
+        values: values,
       }),
     });
     const result = await response.json();
