@@ -24,7 +24,7 @@ const SaleComponent = () => {
               <p className="mt-4 max-w-xl mx-auto text-xl text-gray-600">
                 {sale.content}
               </p>
-              <Link href="/collections/sale">
+              <Link href="/collections/birthday">
                 <a className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto">
                   {sale.buttonText}
                 </a>

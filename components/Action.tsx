@@ -12,9 +12,9 @@ const offers = [
     href: "#",
   },
   {
-    name: "Sign up on our website",
-    description: "Track your order",
-    href: "/account",
+    name: "Loyalty program",
+    description: "Earn a 5% discount on every purchase after the third",
+    href: "#",
   },
 ];
 const ActionComponent: NextPage = () => {
