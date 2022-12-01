@@ -5,6 +5,7 @@ import { BRAND_NAME } from "../lib";
 import InfoComponent from "../components/Info";
 import { withSSRContext } from "aws-amplify";
 import PageNotFound from "./404";
+import { BRAND_URL } from "../lib";
 
 const Info = (data: InfosType) => {
   return (
@@ -14,7 +15,11 @@ const Info = (data: InfosType) => {
       ) : (
         <>
           {data.infos.map((detail, i) => (
-            <MetaComponent title={`${detail.title} | ${BRAND_NAME}`} key={i} />
+            <MetaComponent
+              title={`${detail.title} | ${BRAND_NAME}`}
+              key={i}
+              url={`${BRAND_URL}/info/${detail.page}`}
+            />
           ))}
 
           <InfoComponent {...data} />

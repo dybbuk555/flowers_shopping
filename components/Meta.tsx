@@ -9,7 +9,7 @@ import {
 } from "../lib";
 import { Meta } from "../lib/types";
 
-const MetaComponent = ({ title, description, image, url }: Meta) => {
+const MetaComponent = ({ title, description, image, url, product }: Meta) => {
   return (
     <>
       <Head>
@@ -24,18 +24,6 @@ const MetaComponent = ({ title, description, image, url }: Meta) => {
           content="sSptwoLmfmCDsOmhdYVomW_kcMKEZu4ckCfUEROyemk"
         />
 
-        {/* <meta name="application-name" content={BRAND_NAME} />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content={title || BRAND_TAGLINE} />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#2B5797" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="theme-color" content="#000000" /> */}
-
-
         <meta property="og:type" content="website" />
         <meta property="og:url" content={url || BRAND_URL} />
         <meta property="og:title" content={title || BRAND_TAGLINE} />
@@ -44,6 +32,28 @@ const MetaComponent = ({ title, description, image, url }: Meta) => {
           content={description || BRAND_DESCRIPTION}
         />
         <meta property="og:image" content={image || BRAND_IMAGE} />
+
+        <meta property="product:brand" content={BRAND_NAME} />
+
+        {product && (
+          <>
+            <meta
+              property="product:availability"
+              content={product?.availability}
+            />
+            <meta property="product:condition" content="new" />
+            <meta property="product:price:amount" content={product?.amount} />
+            <meta property="product:price:currency" content="GHS" />
+            <meta
+              property="product:retailer_item_id"
+              content={product?.title}
+            />
+            <meta
+              property="product:item_group_id"
+              content={product?.category}
+            />
+          </>
+        )}
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={url || BRAND_URL} />

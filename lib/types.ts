@@ -3,6 +3,7 @@ export type Meta = {
   description?: string | null;
   image?: string | null;
   url?: string | null;
+  product?: ProductType | null;
 };
 
 export type ImageType = {

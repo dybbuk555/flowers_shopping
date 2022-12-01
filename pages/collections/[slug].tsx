@@ -5,6 +5,7 @@ import { ProductsType } from "../../lib/types";
 import { Bouquets } from "../../src/models";
 import { withSSRContext } from "aws-amplify";
 import PageNotFound from "../404";
+import { BRAND_URL } from "../../lib";
 
 const Collections = (data: ProductsType) => {
   return (
@@ -15,6 +16,7 @@ const Collections = (data: ProductsType) => {
         <>
           <MetaComponent
             title={`Collections for ${data.slug} | ${BRAND_NAME}`}
+            url={`${BRAND_URL}/collections/${data.slug}`}
           />
           <CollectionsComponent {...data} />
         </>
