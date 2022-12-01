@@ -215,8 +215,21 @@ const CheckoutComponent = () => {
     try {
       setOpenFinal(true);
       setOpen(false);
-      values.status = "Paid";
-      await DataStore.save(new CheckoutNew(values));
+
+      const data: any = await DataStore.query(CheckoutNew, (item: any) =>
+        item.email("eq", values.email)
+      );
+      const lastRecord = data[data.length - 1];
+      const id = lastRecord.id;
+
+      const original = await DataStore.query(CheckoutNew, id);
+
+      await DataStore.save(
+        CheckoutNew.copyOf(original!, (updated) => {
+          updated.status = "Paid";
+        })
+      );
+
       await orderUpdateMail(values);
       await adminUpdateMail(values);
       await localforage.clear();
