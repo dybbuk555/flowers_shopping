@@ -7,15 +7,7 @@ const SendOrderSuccessMailApi = async (
 ) => {
   if (req.method === "POST") {
     const { body } = req;
-    const result = await sendMail(
-      body.toEmail,
-      body.fromEmail,
-      body.tracking,
-      body.replyEmail,
-      body.firstName,
-      body.address,
-      body.deliveryDate
-    );
+    const result = await sendMail(body.fromEmail, body.values, body.replyEmail);
 
     res.status(200).json(result);
   } else {

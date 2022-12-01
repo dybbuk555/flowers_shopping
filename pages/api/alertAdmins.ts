@@ -7,7 +7,7 @@ const AlertAdminsApi = async (req: NextApiRequest, res: NextApiResponse) => {
     const result = await sendAdminAlert(
       body.toEmail,
       body.fromEmail,
-      body.delivery
+      body.values
     );
 
     res.status(200).json(result);
