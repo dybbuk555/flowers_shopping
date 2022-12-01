@@ -1,4 +1,6 @@
-const withPWA = require("next-pwa");
+const withPWA = require('next-pwa')({
+  dest: 'public'
+})
 
 const securityHeaders = [
   {
@@ -46,9 +48,7 @@ const nextConfig = {
       },
     ];
   },
-  pwa: {
-    dest: "public",
-  },
+
 };
 
 module.exports = withPWA(nextConfig);
