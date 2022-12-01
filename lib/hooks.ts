@@ -46,9 +46,8 @@ export const useDataWithEmail = (model: any, email: string) => {
   useEffect(() => {
     fetchPosts();
     async function fetchPosts() {
-      const getData: typeof model[] = await DataStore.query(
-        model,
-        (item: any) => item.email("eq", email)
+      const getData: any = await DataStore.query(model, (item: any) =>
+        item.email("eq", email)
       );
       setData(getData);
     }
@@ -132,5 +131,3 @@ export const useDataDescending = (model: any) => {
 
   return data;
 };
-
-
