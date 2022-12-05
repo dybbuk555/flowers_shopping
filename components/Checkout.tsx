@@ -16,6 +16,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 import { adminUpdateMail, orderUpdateMail } from "../lib/api-helper";
 import { subDays } from "date-fns";
+import Link from "next/link";
 
 const Custom = (props: any) => <textarea rows={4} name="review" {...props} />;
 
@@ -421,6 +422,11 @@ const CheckoutComponent = () => {
                             } `}
                             as={Custom}
                           />
+                          <span className="text-gray-500 text-sm hover:text-gray-700">
+                            <Link href={`/playground?option=message`}>
+                              Need help finding the right words? Click here.
+                            </Link>
+                          </span>
                           {errors.note && touched.note && (
                             <span className="text-red-500 hover:text-red-700">
                               {errors.note}

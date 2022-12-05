@@ -164,7 +164,7 @@ const HeaderComponent: NextPage = () => {
 
                 <div className="border-t border-gray-200 py-6 px-4 space-y-6">
                   <div className="flow-root">
-                    {session && session?.user?.email ? (
+                    {session?.user?.email ? (
                       <>
                         <Link href={"/account"}>
                           <div className="-m-2 p-2 block font-medium text-gray-900 cursor">

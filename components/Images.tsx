@@ -5,8 +5,8 @@ import { ImageType } from "../lib/types";
 export const LogoComponent = ({ height, width }: any) => {
   return (
     <Image
-    src={`https://res.cloudinary.com/deyudesls/image/upload/q_auto:best,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`}
-    alt="logo"
+      src={`https://res.cloudinary.com/deyudesls/image/upload/q_auto:best,w_${width},h_${height}/v1626707839/flowersghanaLogo.webp`}
+      alt="logo"
       height={height}
       width={width}
     />
@@ -15,18 +15,6 @@ export const LogoComponent = ({ height, width }: any) => {
 
 export const HeroImageComponent = () => {
   return (
-    // <Image
-    //   src="https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-    //   alt="logo"
-    //   height={838}
-    //   width={720}
-    //   layout='responsive'
-    //   sizes="10vw"
-    //   blurDataURL={
-    //     "https://images.unsplash.com/photo-1577193120905-21e0c301d5d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-    //   }
-    //   placeholder="blur"
-    // />
     <img
       src={HOME_IMAGE_URL}
       alt="brighly colored flower"

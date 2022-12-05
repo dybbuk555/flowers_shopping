@@ -1,3 +1,4 @@
+import React from "react";
 import MetaComponent from "../components/Meta";
 import ReviewsComponent from "../components/Reviews";
 import { BRAND_NAME, BRAND_URL } from "../lib";

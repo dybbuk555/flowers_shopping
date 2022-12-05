@@ -57,6 +57,7 @@ export const navigation = {
   ],
   pages: [
     { name: "Reviews", href: "/reviews" },
+    { name: "Playground", href: "/playground" },
     { name: "Our Story", href: "/about-us" },
   ],
 };
@@ -76,6 +77,7 @@ export const footerNavigation: FooterType = {
     { name: "Contact", href: "/contact" },
     { name: "Delivery", href: "/delivery" },
     { name: "Tracking", href: "/tracking" },
+    { name: "Playground", href: "/playground" },
   ],
   company: [
     { name: "Who we are", href: "/about-us" },
