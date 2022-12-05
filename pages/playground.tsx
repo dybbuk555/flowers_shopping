@@ -60,6 +60,7 @@ const Playground = () => {
               setLoading(true);
               try {
                 if (values.generateType === "image") {
+                  setNote("");
                   const response = await openai.createImage({
                     prompt: values.description,
                     n: 3,
@@ -67,6 +68,7 @@ const Playground = () => {
                   });
                   setImageUrl(response?.data?.data);
                 } else {
+                  setImageUrl([]);
                   const response = await openai.createCompletion({
                     model: "text-davinci-003",
                     prompt: values.description,
@@ -178,7 +180,7 @@ const Playground = () => {
                   </div>
                 </div>
 
-                <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+                <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16 py-5 mx-5">
                   {imageUrl?.length > 0 &&
                     imageUrl?.map((image: any, i) => (
                       <img
